@@ -15,8 +15,18 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
+}
+
+html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 </style>
