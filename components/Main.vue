@@ -13,7 +13,7 @@
           </p>
           <PrimaryButton caption="Buchen" />
         </div>
-        <img width="400" src="@/static/img/photo-stack.png" />
+        <img width="300px" src="@/static/img/photo-stack.png" />
       </div>
     </div>
     <svg
@@ -33,6 +33,12 @@
     <div class="lb">
       <div class="lp">
         <h2>So kommst du zu uns</h2>
+        <p>
+          Unsere Pension in Zschepa mit 2 Zimmern für 1-2 Personen sowie einer
+          Ferienwohnung bis zu 4 Personen liegt direkt am Elberadweg zwischen
+          Riesa und Mühlberg.
+        </p>
+        <Map />
       </div>
     </div>
   </div>
@@ -73,6 +79,7 @@ svg {
     .section-content {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
     }
   }
 }
@@ -95,7 +102,8 @@ svg {
 
   img {
     margin-left: $margin-large;
-    min-width: 45%;
+    min-width: 40%;
+    height: auto;
   }
 
   .lp {
