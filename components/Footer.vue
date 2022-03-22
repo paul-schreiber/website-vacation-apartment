@@ -13,9 +13,20 @@
       />
     </svg>
     <div class="footer-content">
+      <div class="logo">
+        <a href="#"> <img width="230" src="@/static/img/logo.png" /></a>
+      </div>
       <div>Pension Mustermann</div>
       <div>Musterweg 0815</div>
       <div>0815 Musterhausen</div>
+      <div>Telefon:</div>
+      <div>Mail:</div>
+    </div>
+    <div class="sub-footer-content">
+      <div>© Pension Mustermann</div>
+      <div>Datenschutz</div>
+      <div>Impressum</div>
+      <div>Made with ❤️ by Paul</div>
     </div>
   </footer>
 </template>
@@ -41,10 +52,23 @@ footer {
 }
 
 .footer-content {
+  padding: $margin-medium $margin-large;
+  max-width: $max-width;
   margin-top: -2px;
   z-index: 1;
   background-color: $primary-color;
-  height: 150px;
+  height: 250px;
   color: white;
+}
+
+.sub-footer-content {
+  padding: $margin-medium $margin-large;
+  max-width: $max-width;
+  display: flex;
+  justify-content: space-between;
+  background-color: $secondary-color;
+  color: $light-background-color;
+  font-size: $fs-small;
+  font-weight: 200;
 }
 </style>
