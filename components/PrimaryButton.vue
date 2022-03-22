@@ -10,7 +10,7 @@ export default {
 
 <style lang="scss" scoped>
 button {
-  background-color: #6bb9a4;
+  background-color: $primary-color;
   border: none;
   color: white;
   padding: $margin-small $margin-medium;
