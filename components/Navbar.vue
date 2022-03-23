@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     toggleMenu() {
-      console.log("skdhf");
       this.showMenu = !this.showMenu;
     },
   },
@@ -149,7 +148,7 @@ export default {
   a {
     color: #fff;
     display: block;
-    font-size: $fs-large;
+    font-size: $fs-big;
     margin-bottom: 30px;
     text-decoration: none;
   }

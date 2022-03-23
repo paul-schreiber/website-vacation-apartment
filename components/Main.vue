@@ -29,7 +29,10 @@
         fill="#fafafa"
       />
     </svg>
-    <div class="lp"><h2>Unterkunft</h2></div>
+    <div class="lp">
+      <h2>Unterkunft</h2>
+      <Tile />
+    </div>
     <div class="lb">
       <div class="lp">
         <h2>So kommst du zu uns</h2>
@@ -66,6 +69,10 @@ svg {
 
   h1 {
     font-size: $fs-huge;
+  }
+
+  h2 {
+    font-size: $fs-large;
   }
 
   p {
