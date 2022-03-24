@@ -132,7 +132,7 @@ svg {
 @media only screen and (min-width: 992px) {
   .main {
     .intro-container {
-      max-width: 40%;
+      max-width: 45%;
     }
 
     .welcome-section {
@@ -143,7 +143,7 @@ svg {
           margin: 0;
           margin-top: 0;
           min-width: 450px;
-          max-width: 55%;
+          max-width: 50%;
           height: auto;
         }
       }
