@@ -1,14 +1,20 @@
 <template>
   <div>
     <Navbar />
-    <Main />
+    <Main :accommodations="content.accommodations" :texts="content.texts" />
     <Footer />
   </div>
 </template>
 
 <script>
+import content from "../content";
 export default {
   name: "IndexPage",
+  data() {
+    return {
+      content: content,
+    };
+  },
 };
 </script>
 
@@ -23,6 +29,7 @@ html {
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box; /* Opera/IE 8+ */
+  color: $primary-font-color
 }
 *,
 *:before,
