@@ -27,14 +27,14 @@
 export default {
   props: ["title", "icon", "rooms", "price"],
   computed: {
-    cheapestPrice () {
-        return "-"
+    cheapestPrice() {
+      return "-"
     },
-    iconPath () {
-        if (!this.icon) {
+    iconPath() {
+      if (!this.icon) {
         return
       }
-      return require(`@/assets/img/${this.icon}.png`);
+      return require(`@/assets/img/${this.icon}.png`)
     },
   },
 };
@@ -45,7 +45,6 @@ export default {
   width: 350px;
   height: 200px;
   padding: $margin-medium;
-  margin-right: $margin-large;
   margin-bottom: $margin-large;
   background-color: $light-background-color;
   border-radius: 20px;
@@ -84,6 +83,12 @@ export default {
       font-size: $fs-medium;
       font-weight: 600;
     }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .tile:not(:last-child) {
+    margin-right: $margin-large;
   }
 }
 </style>

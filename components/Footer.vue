@@ -3,7 +3,7 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 1850 100"
+      viewBox="0 0 1820 100"
     >
       <path
         id="Pfad_3-2"
@@ -52,7 +52,7 @@ footer {
 }
 
 .footer-content {
-  padding: $margin-medium $margin-large;
+  padding: $margin-medium $margin-big;
   max-width: $max-width;
   margin-top: -2px;
   z-index: 1;
@@ -62,7 +62,7 @@ footer {
 }
 
 .sub-footer-content {
-  padding: $margin-medium $margin-large;
+  padding: $margin-medium $margin-big;
   max-width: $max-width;
   display: flex;
   justify-content: space-between;
@@ -70,5 +70,15 @@ footer {
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: 200;
+}
+
+@media only screen and (min-width: 800px) {
+  .footer-content {
+    padding: $margin-medium $margin-huge;
+  }
+
+  .sub-footer-content {
+    padding: $margin-medium $margin-huge;
+  }
 }
 </style>

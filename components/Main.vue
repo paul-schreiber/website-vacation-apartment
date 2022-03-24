@@ -9,7 +9,7 @@
           </p>
           <PrimaryButton caption="Buchen" />
         </div>
-        <img width="650px" src="@/assets/img/photo-stack-2.png" />
+        <img class="intro-img" src="@/assets/img/photo-stack-2.png" />
       </div>
     </div>
     <svg
@@ -72,6 +72,7 @@ svg {
   filter: drop-shadow(0px 5px 60px rgba(0, 0, 0, 0.13));
   /* Similar syntax to box-shadow */
 }
+
 .main {
   background-color: $dark-background-color;
   width: 100%;
@@ -102,14 +103,23 @@ svg {
     }
   }
 
+  .intro-img {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: $margin-large;
+    margin-bottom: $margin-large;
+  }
+
   .tile-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 .lp {
-  padding: $margin-medium $margin-large;
+  padding: $margin-medium $margin-big;
   min-height: 480px;
   max-width: $max-width;
   margin: auto;
@@ -119,18 +129,34 @@ svg {
   background-color: $light-background-color;
 }
 
-@media only screen and (min-width: 900px) {
-  .intro-container {
-    width: 45%;
-  }
+@media only screen and (min-width: 992px) {
+  .main {
+    .intro-container {
+      max-width: 40%;
+    }
 
-  img {
-    margin-left: $margin-large;
-    min-width: 40%;
-    max-width: 80%;
-    height: auto;
-  }
+    .welcome-section {
+      .section-content {
+        flex-wrap: nowrap;
 
+        .intro-img {
+          margin: 0;
+          margin-top: 0;
+          min-width: 450px;
+          max-width: 55%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 800px) {
+  .main {
+    .tile-container {
+      align-items: flex-start;
+      flex-direction: row;
+    }
+  }
   .lp {
     padding: $margin-large $margin-huge;
   }
