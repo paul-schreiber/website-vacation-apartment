@@ -1,8 +1,10 @@
 <template>
   <div class="tile">
     <header>
-      <div class="tile-title">Titel</div>
-      <div class="tile-icon">X</div>
+      <div class="tile-title">{{ title }}</div>
+      <div class="tile-icon">
+        <img height="30" :src="iconPath" :alt="icon" />
+      </div>
     </header>
     <div class="tile-content">
       <div class="tile-details">
@@ -15,17 +17,36 @@
       </div>
     </div>
     <footer>
-      <div class="tile-price">ab 40€/Nacht</div>
+      <div class="tile-price">ab {{ cheapestPrice }}€/Nacht</div>
       <PrimaryButton caption="Details" />
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["title", "icon", "rooms", "price"],
+  computed: {
+    cheapestPrice () {
+        return "-"
+    },
+    iconPath () {
+        if (!this.icon) {
+        return
+      }
+      return require(`@/assets/img/${this.icon}.png`);
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .tile {
   width: 350px;
   height: 200px;
   padding: $margin-medium;
+  margin-right: $margin-large;
+  margin-bottom: $margin-large;
   background-color: $light-background-color;
   border-radius: 20px;
   box-shadow: $soft-shadow;
@@ -48,6 +69,7 @@
         padding: 0px;
         li {
           list-style: none;
+          font-weight: 300;
         }
       }
     }

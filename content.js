@@ -1,10 +1,10 @@
-export const content = {
+export default {
     name: "Pension Mustermann",
     logo: "logo-mustermann.png",
     address: {
         street: "Musterstraße",
         streetNumber: 1,
-        zipCode: 0815,
+        zipCode: "0815",
         city: "Musterhausen"
     },
     telephone: "080008151337",
@@ -12,7 +12,7 @@ export const content = {
     accommodations: [
         {
             name: "FW Hofidylle",
-            icon: "bed.png",
+            icon: "bed",
             rooms: {
                 livingroom: 1,
                 bathroom: 1,
@@ -42,7 +42,7 @@ export const content = {
         },
         {
             name: "FW Urlaubsparadies",
-            icon: "chair.png",
+            icon: "armchair",
             rooms: {
                 livingroom: 2,
                 bathroom: 2,

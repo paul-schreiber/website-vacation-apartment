@@ -3,7 +3,7 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 1900 100"
+      viewBox="0 0 1850 100"
     >
       <path
         id="Pfad_3-2"
@@ -14,7 +14,7 @@
     </svg>
     <div class="footer-content">
       <div class="logo">
-        <a href="#"> <img width="230" src="@/static/img/logo.png" /></a>
+        <a href="#"> <img width="230" src="@/assets/img/logo.png" /></a>
       </div>
       <div>Pension Mustermann</div>
       <div>Musterweg 0815</div>

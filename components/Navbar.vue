@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="navbar-content">
       <div class="logo">
-        <a href="#"> <img width="230" src="@/static/img/logo.png" /></a>
+        <a href="#"> <img width="230" src="@/assets/img/logo.png" /></a>
       </div>
       <ul class="menu" :class="[showMenu ? 'overlay' : '']">
         <li><a href="#">Home</a></li>

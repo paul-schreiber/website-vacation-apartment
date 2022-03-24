@@ -3,17 +3,13 @@
     <div class="welcome-section lb">
       <div class="section-content lp">
         <div class="intro-container">
-          <h1>Schön dich zu sehen!</h1>
+          <h1>{{ texts.greeting }}</h1>
           <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
+            {{ texts.intro }}
           </p>
           <PrimaryButton caption="Buchen" />
         </div>
-        <img width="300px" src="@/static/img/photo-stack.png" />
+        <img width="650px" src="@/assets/img/photo-stack-2.png" />
       </div>
     </div>
     <svg
@@ -30,16 +26,24 @@
       />
     </svg>
     <div class="lp">
-      <h2>Unterkunft</h2>
-      <Tile />
+      <h2 v-if="multipleAccommodations">Unterkünfte</h2>
+      <h2 v-else>Unterkunft</h2>
+      <div class="tile-container">
+        <Tile
+          v-for="accom in accommodations"
+          :title="accom.name"
+          :icon="accom.icon"
+          :rooms="accom.rooms"
+          :price="accom.price"
+          :key="accom.name"
+        />
+      </div>
     </div>
     <div class="lb">
       <div class="lp">
         <h2>So kommst du zu uns</h2>
         <p>
-          Unsere Pension in Zschepa mit 2 Zimmern für 1-2 Personen sowie einer
-          Ferienwohnung bis zu 4 Personen liegt direkt am Elberadweg zwischen
-          Riesa und Mühlberg.
+          {{ texts.location }}
         </p>
         <Map />
       </div>
@@ -48,6 +52,14 @@
 </template>
 
 <script>
+export default {
+  props: ["accommodations", "texts"],
+  data() {
+    return {
+      multipleAccommodations: this.accommodations.length - 1,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -89,6 +101,11 @@ svg {
       justify-content: space-between;
     }
   }
+
+  .tile-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .lp {
@@ -110,6 +127,7 @@ svg {
   img {
     margin-left: $margin-large;
     min-width: 40%;
+    max-width: 80%;
     height: auto;
   }
 
