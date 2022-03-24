@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  props: ['caption']
-}
+  props: ["caption"],
+};
 </script>
 
 <style lang="scss" scoped>
@@ -20,5 +20,9 @@ button {
   font-size: $fs-normal;
   border-radius: 15px;
   cursor: pointer;
+
+  &:hover {
+    filter: brightness(90%);
+  }
 }
 </style>
