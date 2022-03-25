@@ -4,7 +4,7 @@
       <div class="section-content lp">
         <div class="intro-container">
           <h1>{{ texts.greeting }}</h1>
-          <p>
+          <p class="standard-text">
             {{ texts.intro }}
           </p>
           <PrimaryButton caption="Buchen" />
@@ -42,7 +42,7 @@
     <div class="lb">
       <div class="lp">
         <h2>So kommst du zu uns</h2>
-        <p>
+        <p class="standard-text">
           {{ texts.location }}
         </p>
         <Map />
@@ -88,9 +88,10 @@ svg {
     font-size: $fs-large;
   }
 
-  p {
+  .standard-text {
     color: $secondary-font-color;
     font-weight: $fw-light;
+    line-height: 1.6rem;
   }
 
   .welcome-section {
@@ -100,14 +101,12 @@ svg {
     .section-content {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
     }
   }
 
   .intro-img {
     width: 100%;
     max-width: 700px;
-    margin: auto;
     margin-top: $margin-large;
     margin-bottom: $margin-large;
   }
@@ -133,18 +132,23 @@ svg {
 @media only screen and (min-width: 992px) {
   .main {
     .intro-container {
-      max-width: 45%;
+      max-width: 40%;
     }
 
     .welcome-section {
       .section-content {
         flex-wrap: nowrap;
+        min-height: 75vh;
+        justify-content: space-between;
+        //align-items: center;
 
         .intro-img {
-          margin: 0;
+          align-self: center;
           margin-top: 0;
+          margin-bottom: 0;
           min-width: 450px;
-          max-width: 50%;
+          max-width: 55%;
+          width: auto;
           height: auto;
         }
       }

@@ -26,7 +26,7 @@
       <div>© Pension Mustermann</div>
       <div>Datenschutz</div>
       <div>Impressum</div>
-      <div>Made with ❤️ by Paul</div>
+      <div class="author" >Design by <a href="https://github.com/paul-schreiber">Paul Schreiber</a></div>
     </div>
   </footer>
 </template>
@@ -70,6 +70,10 @@ footer {
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: $fw-light;
+
+  .author a {
+    color: white;
+  }
 }
 
 @media only screen and (min-width: 800px) {
