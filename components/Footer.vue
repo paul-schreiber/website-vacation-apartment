@@ -69,7 +69,7 @@ footer {
   background-color: $secondary-color;
   color: $light-background-color;
   font-size: $fs-small;
-  font-weight: 200;
+  font-weight: $fw-light;
 }
 
 @media only screen and (min-width: 800px) {

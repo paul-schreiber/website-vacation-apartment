@@ -148,7 +148,7 @@ export default {
   a {
     color: #fff;
     display: block;
-    font-size: $fs-big;
+    font-size: $fs-medium;
     margin-bottom: 30px;
     text-decoration: none;
   }

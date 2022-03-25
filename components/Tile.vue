@@ -55,8 +55,8 @@ export default {
     justify-content: space-between;
 
     .tile-title {
-      font-weight: 600;
-      font-size: $fs-big;
+      font-weight: $fw-bold;
+      font-size: $fs-medium;
     }
   }
 
@@ -68,7 +68,7 @@ export default {
         padding: 0px;
         li {
           list-style: none;
-          font-weight: 300;
+          font-weight: $fw-light;
         }
       }
     }
@@ -80,8 +80,8 @@ export default {
     padding-left: $margin-medium;
 
     .tile-price {
-      font-size: $fs-medium;
-      font-weight: 600;
+      font-size: $fs-normal;
+      font-weight: $fw-bold;
     }
   }
 }

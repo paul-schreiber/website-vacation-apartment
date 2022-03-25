@@ -90,6 +90,7 @@ svg {
 
   p {
     color: $secondary-font-color;
+    font-weight: $fw-light;
   }
 
   .welcome-section {
