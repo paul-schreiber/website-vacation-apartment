@@ -13,6 +13,7 @@
       />
     </svg>
     <div class="footer-content">
+      <div>
       <div class="logo">
         <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
       </div>
@@ -29,6 +30,7 @@
           Mail: <a class="contact-link" :href="mailLink">{{ mail }}</a>
         </div>
       </address>
+      </div>
     </div>
     <div class="sub-footer-content">
       <div>© Pension Mustermann</div>
@@ -87,13 +89,11 @@ footer {
   .logo {
     margin-bottom: $margin-medium;
     img {
-      width: 250px;
+      width: 220px;
     }
   }
 
   .contact-data {
-    width: 400px;
-    margin-left: 228px;
   }
 }
 
