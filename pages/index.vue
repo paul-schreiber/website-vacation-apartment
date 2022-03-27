@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <Main :accommodations="content.accommodations" :texts="content.texts" />
-    <Footer />
+    <Footer :name="content.name" :address="content.address" :telephone="content.telephone" :mail="content.mail" />
   </div>
 </template>
 

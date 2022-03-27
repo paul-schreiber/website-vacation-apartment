@@ -14,26 +14,47 @@
     </svg>
     <div class="footer-content">
       <div class="logo">
-        <a href="#"> <img width="230" src="@/assets/img/logo.png" /></a>
+        <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
       </div>
-      <div>Pension Mustermann</div>
-      <div>Musterweg 0815</div>
-      <div>0815 Musterhausen</div>
-      <div>Telefon:</div>
-      <div>Mail:</div>
+      <address class="contact-data">
+        <div>{{ name }}</div>
+        <div>{{ address.street }} {{ address.streetNumber }}</div>
+        <div>{{ address.zipCode }} {{ address.city }}</div>
+
+        <div class="mt-m">
+          Telefon:
+          <a class="contact-link" :href="telephoneLink">{{ telephone }}</a>
+        </div>
+        <div>
+          Mail: <a class="contact-link" :href="mailLink">{{ mail }}</a>
+        </div>
+      </address>
     </div>
     <div class="sub-footer-content">
       <div>© Pension Mustermann</div>
       <div>Datenschutz</div>
       <div>Impressum</div>
-      <div class="author" >Design by <a href="https://github.com/paul-schreiber">Paul Schreiber</a></div>
+      <div>
+        Design by
+        <a class="contact-link" href="https://github.com/paul-schreiber"
+          >Paul Schreiber</a
+        >
+      </div>
     </div>
   </footer>
 </template>
 
 <script>
 export default {
-  name: "NuxtTutorial",
+  props: ["name", "address", "telephone", "mail"],
+  computed: {
+    telephoneLink() {
+      return `tel:+${this.telephone}`;
+    },
+    mailLink() {
+      return `mailto:${this.mail}`;
+    },
+  },
 };
 </script>
 
@@ -59,6 +80,21 @@ footer {
   background-color: $primary-color;
   height: 250px;
   color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .logo {
+    margin-bottom: $margin-medium;
+    img {
+      width: 250px;
+    }
+  }
+
+  .contact-data {
+    width: 400px;
+    margin-left: 228px;
+  }
 }
 
 .sub-footer-content {
@@ -70,10 +106,14 @@ footer {
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: $fw-light;
+}
 
-  .author a {
-    color: white;
-  }
+a.contact-link {
+  color: white;
+}
+
+.mt-m {
+  margin-top: $margin-medium;
 }
 
 @media only screen and (min-width: 800px) {
