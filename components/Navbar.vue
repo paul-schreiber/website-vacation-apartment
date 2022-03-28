@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="#"> <img src="@/assets/img/logo.png" /></a>
       </div>
-      <ul class="menu" :class="[showMenu ? 'overlay' : '']">
+      <ul class="menu" @click="toggleMenu" :class="[showMenu ? 'overlay' : '']">
         <li><a href="#accommodation">Unterkunft</a></li>
         <li><a href="#route">Anfahrt</a></li>
         <li><a href="#contact">Kontakt</a></li>
@@ -76,90 +76,92 @@ export default {
   }
 }
 
-.burger-menu {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  overflow: visible;
-  z-index: 4;
-  margin-right: 27px;
-}
-.burger-menu span,
-.burger-menu span:before,
-.burger-menu span:after {
-  background: $light-font-color;
-  display: block;
-  height: 3px;
-  border-radius: 20px;
-  opacity: 1;
-  position: relative;
-  transition: 0.3s ease-in-out;
-}
-.burger-menu span:before,
-.burger-menu span:after {
-  content: "";
-}
-.burger-menu span {
-  right: 0px;
-  top: 10px;
-  width: 27px;
-}
-.burger-menu span:before {
-  left: 0px;
-  top: -10px;
-  width: 27px;
-}
-.burger-menu span:after {
-  left: 0px;
-  top: 8px;
-  width: 27px;
-}
-
-.burger-menu.close span,
-.burger-menu.close span:before,
-.burger-menu.close span:after {
-  background: white;
-}
-
-.burger-menu.close span {
-  transform: rotate(-45deg);
-  top: 13px;
-  width: 27px;
-}
-.burger-menu.close span:before {
-  top: 0px;
-  transform: rotate(90deg);
-  width: 27px;
-}
-.burger-menu.close span:after {
-  top: 0px;
-  left: 0;
-  transform: rotate(90deg);
-  opacity: 0;
-  width: 0;
-}
-.menu.overlay {
-  display: block;
-  margin: 0;
-  padding-top: 100px;
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 3;
-  color: #fff;
-  min-width: 100%;
-  min-height: 100%;
-  position: fixed;
-  top: 0;
-  height: 0;
-  text-align: center;
-  padding-top: 20px;
-  transition: all 0.3s ease-in-out;
-
-  a {
-    color: #fff;
+@media only screen and (max-width: 900px) {
+  .burger-menu {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    overflow: visible;
+    z-index: 4;
+    margin-right: 27px;
+  }
+  .burger-menu span,
+  .burger-menu span:before,
+  .burger-menu span:after {
+    background: $light-font-color;
     display: block;
-    font-size: $fs-medium;
-    margin-bottom: 30px;
-    text-decoration: none;
+    height: 3px;
+    border-radius: 20px;
+    opacity: 1;
+    position: relative;
+    transition: 0.3s ease-in-out;
+  }
+  .burger-menu span:before,
+  .burger-menu span:after {
+    content: "";
+  }
+  .burger-menu span {
+    right: 0px;
+    top: 10px;
+    width: 27px;
+  }
+  .burger-menu span:before {
+    left: 0px;
+    top: -10px;
+    width: 27px;
+  }
+  .burger-menu span:after {
+    left: 0px;
+    top: 8px;
+    width: 27px;
+  }
+
+  .burger-menu.close span,
+  .burger-menu.close span:before,
+  .burger-menu.close span:after {
+    background: white;
+  }
+
+  .burger-menu.close span {
+    transform: rotate(-45deg);
+    top: 13px;
+    width: 27px;
+  }
+  .burger-menu.close span:before {
+    top: 0px;
+    transform: rotate(90deg);
+    width: 27px;
+  }
+  .burger-menu.close span:after {
+    top: 0px;
+    left: 0;
+    transform: rotate(90deg);
+    opacity: 0;
+    width: 0;
+  }
+  .menu.overlay {
+    display: block;
+    margin: 0;
+    padding-top: 100px;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 3;
+    color: #fff;
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    height: 0;
+    text-align: center;
+    padding-top: 20px;
+    transition: all 0.3s ease-in-out;
+
+    a {
+      color: #fff;
+      display: block;
+      font-size: $fs-medium;
+      margin-bottom: 30px;
+      text-decoration: none;
+    }
   }
 }
 
