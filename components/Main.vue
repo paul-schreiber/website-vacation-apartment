@@ -34,7 +34,7 @@
           :title="accom.name"
           :icon="accom.icon"
           :rooms="accom.rooms"
-          :price="accom.price"
+          :priceCatalogue="accom.prices"
           :key="accom.name"
         />
       </div>

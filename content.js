@@ -20,21 +20,22 @@ export default {
                 bedroomTwoBed: 1,
                 kitchen: 1,
             },
-            price: {
+            prices: {
                 summer: {
-                    basePrice: 30,
+                    basePrice: 20,
                     pricePerPerson: 15,
                 },
                 winter: {
                     basePrice: 40,
                     pricePerPerson: 15,
                 },
-                cleaingFee: 5,
-                discount: [
+                cleaningFee: 5,
+                discounts: [
                     {
                         days: 5,
                         percentage: 5
-                    }, {
+                    },
+                    {
                         days: 14,
                         percentage: 8
                     }]
@@ -50,7 +51,7 @@ export default {
                 bedroomTwoBed: 2,
                 kitchen: 1,
             },
-            price: {
+            prices: {
                 summer: {
                     basePrice: 45,
                     pricePerPerson: 20,
@@ -59,12 +60,13 @@ export default {
                     basePrice: 60,
                     pricePerPerson: 20,
                 },
-                cleaingFee: 10,
-                discount: [
+                cleaningFee: 10,
+                discounts: [
                     {
                         days: 5,
                         percentage: 5
-                    }, {
+                    },
+                    {
                         days: 14,
                         percentage: 8
                     }]

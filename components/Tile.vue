@@ -9,15 +9,19 @@
     <div class="tile-content">
       <div class="tile-details">
         <ul>
-          <li>1x Wohnzimmer</li>
-          <li>1x Schlafzimmer</li>
-          <li>1x Küche</li>
-          <li>1x Badezimmer</li>
+          <li v-if="rooms.livingroom">{{ rooms.livingroom }}x Wohnzimmer</li>
+          <li v-if="rooms.bathroom">{{ rooms.bathroom }}x Bad</li>
+          <li v-if="rooms.bedroomOneBed || rooms.bedroomTwoBed">
+            {{ rooms.bedroomOneBed + rooms.bedroomTwoBed }}x Schlafzimmer({{ bedCount }} Betten)
+          </li>
+          <li v-if="rooms.kitchen">{{ rooms.kitchen }}x Küche</li>
         </ul>
       </div>
     </div>
     <footer>
-      <div class="tile-price">ab {{ cheapestPrice }}€/Nacht</div>
+      <div @click="getPrice(10, 1, 5)" class="tile-price">
+        ab {{ cheapestPrice }}€/Nacht
+      </div>
       <PrimaryButton caption="Details" />
     </footer>
   </div>
@@ -25,16 +29,65 @@
 
 <script>
 export default {
-  props: ["title", "icon", "rooms", "price"],
+  props: ["title", "icon", "rooms", "priceCatalogue"],
+  data() {
+    return {
+      isSummer: true,
+    };
+  },
   computed: {
     cheapestPrice() {
-      return "-"
+      let { basePrice, pricePerPerson } = this.priceCatalogue.summer
+      return basePrice + pricePerPerson + this.priceCatalogue.cleaningFee
     },
     iconPath() {
       if (!this.icon) {
         return
       }
       return require(`@/assets/img/${this.icon}.png`)
+    },
+    bedCount() {
+      if (this.rooms)
+        return this.rooms.bedroomOneBed + this.rooms.bedroomTwoBed * 2
+    }
+  },
+  methods: {
+    getPrice(startDate, endDate, persons) {
+      console.log("t")
+      return this.calculatePrice(
+        5,
+        5,
+        this.priceCatalogue,
+        this.isSummer
+      )
+    },
+    calculatePrice(days, persons, priceCatalogue, isSummer) {
+      let { basePrice, pricePerPerson } = isSummer
+        ? priceCatalogue.summer
+        : priceCatalogue.winter
+
+      let selectedDiscount = this.selectDiscount(
+        days,
+        priceCatalogue.discounts
+      )
+
+      let dynamicPrice = days * (basePrice + pricePerPerson * persons)
+      let discountedPrice = (dynamicPrice * selectedDiscount) / 100
+
+      return discountedPrice + priceCatalogue.cleaningFee
+    },
+    selectDiscount(days, discounts) {
+      const possibleDiscounts = discounts.filter((discount) => {
+        return discount.days <= days
+      });
+      const strippedDiscounts = possibleDiscounts.map((discount) => {
+            return discount.percentage
+          })
+        
+      //Add no discount to array
+      strippedDiscounts.push(1)
+      return Math.max(...strippedDiscounts)
+      
     },
   },
 };
@@ -49,6 +102,9 @@ export default {
   background-color: $light-background-color;
   border-radius: 20px;
   box-shadow: $soft-shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   header {
     display: flex;
@@ -64,6 +120,7 @@ export default {
     padding-left: $margin-medium;
 
     .tile-details {
+      height: 80px;
       ul {
         padding: 0px;
         li {
