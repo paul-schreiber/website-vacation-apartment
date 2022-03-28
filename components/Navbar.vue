@@ -65,6 +65,14 @@ export default {
 
   li {
     list-style: none;
+    cursor: pointer;
+
+    a {
+      transition: all 0.3s;
+      &:hover {
+        color: $primary-font-color;
+      }
+    }
   }
 }
 

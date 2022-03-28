@@ -104,6 +104,12 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+  transition: transform .4s ease; 
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   header {
     display: flex;

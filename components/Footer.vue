@@ -14,22 +14,25 @@
     </svg>
     <div class="footer-content">
       <div>
-      <div class="logo" id="contact">
-        <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
-      </div>
-      <address class="contact-data">
-        <div>{{ name }}</div>
-        <div>{{ address.street }} {{ address.streetNumber }}</div>
-        <div>{{ address.zipCode }} {{ address.city }}</div>
+        <div class="logo" id="contact">
+          <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
+        </div>
+        <address class="contact-data">
+          <div>{{ name }}</div>
+          <div>{{ address.street }} {{ address.streetNumber }}</div>
+          <div>{{ address.zipCode }} {{ address.city }}</div>
 
-        <div class="mt-m">
-          Telefon:
-          <a class="contact-link" :href="telephoneLink">{{ telephone }}</a>
-        </div>
-        <div>
-          Mail: <a class="contact-link" :href="mailLink">{{ mail }}</a>
-        </div>
-      </address>
+          <div class="mt-b">
+            <a class="contact-link" :href="telephoneLink">
+              <fa-icon class="mr-s" icon="phone" />{{ telephone }}</a
+            >
+          </div>
+          <div class="mt-s">
+            <a class="contact-link" :href="mailLink">
+              <fa-icon class="mr-s" icon="envelope" />{{ mail }}</a
+            >
+          </div>
+        </address>
       </div>
     </div>
     <div class="sub-footer-content">
@@ -94,6 +97,7 @@ footer {
   }
 
   .contact-data {
+    font-style: normal;
   }
 }
 
@@ -112,8 +116,15 @@ a.contact-link {
   color: white;
 }
 
-.mt-m {
-  margin-top: $margin-medium;
+.mt-b {
+  margin-top: $margin-big;
+}
+.mt-s {
+  margin-top: $margin-small;
+}
+
+.mr-s {
+  margin-right: $margin-small;
 }
 
 @media only screen and (min-width: 800px) {
