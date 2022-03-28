@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <div class="welcome-section lb">
-      <div class="section-content lp">
+    <div class="welcome-section bg-l">
+      <div class="section-content section">
         <div class="intro-container">
           <h1>{{ texts.greeting }}</h1>
           <p class="standard-text">
@@ -25,7 +25,7 @@
         fill="#fafafa"
       />
     </svg>
-    <div id="accommodation" class="lp">
+    <div id="accommodation" class="section">
       <h2 v-if="multipleAccommodations">Unterkünfte</h2>
       <h2 v-else>Unterkunft</h2>
       <div class="tile-container">
@@ -39,9 +39,9 @@
         />
       </div>
     </div>
-    <div class="lb">
-      <div id="route" class="lp">
-        <h2 >So kommst du zu uns</h2>
+    <div class="bg-l">
+      <div id="route" class="section">
+        <h2>So kommst du zu uns</h2>
         <p class="standard-text">
           {{ texts.location }}
         </p>
@@ -68,9 +68,8 @@ svg {
   z-index: -1;
 }
 .soft-shadow {
-  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.13));
-  filter: drop-shadow(0px 5px 60px rgba(0, 0, 0, 0.13));
-  /* Similar syntax to box-shadow */
+  -webkit-filter: drop-shadow(0px 5px 40px rgba(0, 0, 0, 0.12));
+  filter: drop-shadow(0px 5px 40px rgba(0, 0, 0, 0.12));
 }
 
 .main {
@@ -101,6 +100,7 @@ svg {
     .section-content {
       display: flex;
       flex-wrap: wrap;
+      padding-top: $margin-big;
     }
   }
 
@@ -118,14 +118,14 @@ svg {
   }
 }
 
-.lp {
+.section {
   padding: $margin-medium $margin-big;
   min-height: 530px;
   max-width: $max-width;
   margin: auto;
 }
 
-.lb {
+.bg-l {
   background-color: $light-background-color;
 }
 
@@ -162,8 +162,8 @@ svg {
       flex-direction: row;
     }
   }
-  .lp {
-    padding: $margin-large $margin-huge;
+  .section {
+    padding: $margin-huge $margin-huge;
   }
 }
 </style>
