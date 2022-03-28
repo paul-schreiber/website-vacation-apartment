@@ -25,7 +25,7 @@
         fill="#fafafa"
       />
     </svg>
-    <div class="lp">
+    <div id="accommodation" class="lp">
       <h2 v-if="multipleAccommodations">Unterkünfte</h2>
       <h2 v-else>Unterkunft</h2>
       <div class="tile-container">
@@ -40,8 +40,8 @@
       </div>
     </div>
     <div class="lb">
-      <div class="lp">
-        <h2>So kommst du zu uns</h2>
+      <div id="route" class="lp">
+        <h2 >So kommst du zu uns</h2>
         <p class="standard-text">
           {{ texts.location }}
         </p>
@@ -120,7 +120,7 @@ svg {
 
 .lp {
   padding: $margin-medium $margin-big;
-  min-height: 480px;
+  min-height: 530px;
   max-width: $max-width;
   margin: auto;
 }

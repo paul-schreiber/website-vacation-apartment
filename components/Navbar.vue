@@ -2,13 +2,12 @@
   <nav class="navbar">
     <div class="navbar-content">
       <div class="logo">
-        <a href="#"> <img width="230" src="@/assets/img/logo.png" /></a>
+        <a href="#"> <img src="@/assets/img/logo.png" /></a>
       </div>
       <ul class="menu" :class="[showMenu ? 'overlay' : '']">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Unterkunft</a></li>
-        <li><a href="#">Anfahrt</a></li>
-        <li><a href="#">Kontakt</a></li>
+        <li><a href="#accommodation">Unterkunft</a></li>
+        <li><a href="#route">Anfahrt</a></li>
+        <li><a href="#contact">Kontakt</a></li>
       </ul>
       <div
         class="burger-menu"
@@ -49,8 +48,10 @@ export default {
     padding: 30px 0px;
 
     .logo {
-      width: 230px;
-      margin-left: $margin-medium;
+      margin-left: $margin-big;
+      img {
+        width: 250px;
+      }
     }
   }
 

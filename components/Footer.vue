@@ -14,7 +14,7 @@
     </svg>
     <div class="footer-content">
       <div>
-      <div class="logo">
+      <div class="logo" id="contact">
         <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
       </div>
       <address class="contact-data">
@@ -80,7 +80,7 @@ footer {
   margin-top: -2px;
   z-index: 1;
   background-color: $primary-color;
-  height: 250px;
+  height: 280px;
   color: white;
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@ footer {
   .logo {
     margin-bottom: $margin-medium;
     img {
-      width: 220px;
+      width: 250px;
     }
   }
 

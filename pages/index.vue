@@ -9,7 +9,6 @@
 <script>
 import content from "../content";
 export default {
-  name: "IndexPage",
   data() {
     return {
       content: content,
@@ -30,6 +29,7 @@ html {
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box; /* Opera/IE 8+ */
   color: $primary-font-color;
+  scroll-behavior: smooth;
 }
 *,
 *:before,

@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     getPrice(startDate, endDate, persons) {
-      console.log("t")
       return this.calculatePrice(
         5,
         5,
