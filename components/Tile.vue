@@ -1,29 +1,35 @@
 <template>
-  <div class="tile">
-    <header>
-      <div class="tile-title">{{ title }}</div>
-      <div class="tile-icon">
-        <img height="30" :src="iconPath" :alt="icon" />
+  <div>
+    <div class="tile" @click="toggleMenu">
+      <header>
+        <div class="tile-title">{{ title }}</div>
+        <div class="tile-icon">
+          <img height="30" :src="iconPath" :alt="icon" />
+        </div>
+      </header>
+      <div class="tile-content">
+        <div class="tile-details">
+          <ul>
+            <li v-if="rooms.livingroom">{{ rooms.livingroom }}x Wohnzimmer</li>
+            <li v-if="rooms.bathroom">{{ rooms.bathroom }}x Bad</li>
+            <li v-if="rooms.bedroomOneBed || rooms.bedroomTwoBed">
+              {{ rooms.bedroomOneBed + rooms.bedroomTwoBed }}x Schlafzimmer({{
+                bedCount
+              }}
+              Betten)
+            </li>
+            <li v-if="rooms.kitchen">{{ rooms.kitchen }}x Küche</li>
+          </ul>
+        </div>
       </div>
-    </header>
-    <div class="tile-content">
-      <div class="tile-details">
-        <ul>
-          <li v-if="rooms.livingroom">{{ rooms.livingroom }}x Wohnzimmer</li>
-          <li v-if="rooms.bathroom">{{ rooms.bathroom }}x Bad</li>
-          <li v-if="rooms.bedroomOneBed || rooms.bedroomTwoBed">
-            {{ rooms.bedroomOneBed + rooms.bedroomTwoBed }}x Schlafzimmer({{ bedCount }} Betten)
-          </li>
-          <li v-if="rooms.kitchen">{{ rooms.kitchen }}x Küche</li>
-        </ul>
-      </div>
+      <footer>
+        <div @click="getPrice(10, 1, 5)" class="tile-price">
+          ab {{ cheapestPrice }}€/Nacht
+        </div>
+        <PrimaryButton caption="Details" />
+      </footer>
     </div>
-    <footer>
-      <div @click="getPrice(10, 1, 5)" class="tile-price">
-        ab {{ cheapestPrice }}€/Nacht
-      </div>
-      <PrimaryButton caption="Details" />
-    </footer>
+    <Popover :isVisible="showDetails" :toggleMenu="toggleMenu"/>
   </div>
 </template>
 
@@ -33,60 +39,58 @@ export default {
   data() {
     return {
       isSummer: true,
+      showDetails: false
     };
   },
   computed: {
     cheapestPrice() {
-      let { basePrice, pricePerPerson } = this.priceCatalogue.summer
-      return basePrice + pricePerPerson + this.priceCatalogue.cleaningFee
+      let { basePrice, pricePerPerson } = this.priceCatalogue.summer;
+      return basePrice + pricePerPerson + this.priceCatalogue.cleaningFee;
     },
     iconPath() {
       if (!this.icon) {
-        return
+        return;
       }
-      return require(`@/assets/img/${this.icon}.png`)
+      return require(`@/assets/img/${this.icon}.png`);
     },
     bedCount() {
       if (this.rooms)
-        return this.rooms.bedroomOneBed + this.rooms.bedroomTwoBed * 2
-    }
+        return this.rooms.bedroomOneBed + this.rooms.bedroomTwoBed * 2;
+    },
   },
   methods: {
+    toggleMenu(){
+      this.showDetails = !this.showDetails
+    },
     getPrice(startDate, endDate, persons) {
-      return this.calculatePrice(
-        5,
-        5,
-        this.priceCatalogue,
-        this.isSummer
-      )
+      return this.calculatePrice(5, 5, this.priceCatalogue, this.isSummer);
     },
     calculatePrice(days, persons, priceCatalogue, isSummer) {
       let { basePrice, pricePerPerson } = isSummer
         ? priceCatalogue.summer
-        : priceCatalogue.winter
+        : priceCatalogue.winter;
 
       let selectedDiscount = this.selectDiscount(
         days,
         priceCatalogue.discounts
-      )
+      );
 
-      let dynamicPrice = days * (basePrice + pricePerPerson * persons)
-      let discountedPrice = (dynamicPrice * selectedDiscount) / 100
+      let dynamicPrice = days * (basePrice + pricePerPerson * persons);
+      let discountedPrice = (dynamicPrice * selectedDiscount) / 100;
 
-      return discountedPrice + priceCatalogue.cleaningFee
+      return discountedPrice + priceCatalogue.cleaningFee;
     },
     selectDiscount(days, discounts) {
       const possibleDiscounts = discounts.filter((discount) => {
-        return discount.days <= days
+        return discount.days <= days;
       });
       const strippedDiscounts = possibleDiscounts.map((discount) => {
-            return discount.percentage
-          })
-        
+        return discount.percentage;
+      });
+
       //Add no discount to array
-      strippedDiscounts.push(1)
-      return Math.max(...strippedDiscounts)
-      
+      strippedDiscounts.push(1);
+      return Math.max(...strippedDiscounts);
     },
   },
 };
@@ -105,7 +109,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  transition: transform .4s ease; 
+  transition: transform 0.4s ease;
 
   &:hover {
     transform: scale(1.05);
