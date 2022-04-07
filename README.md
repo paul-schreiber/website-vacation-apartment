@@ -1,5 +1,7 @@
 # website-ferienwohnung
 
+static generic SPA for apartment websites
+
 ## Build Setup
 
 ```bash
