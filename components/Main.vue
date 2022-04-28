@@ -7,7 +7,7 @@
           <p class="standard-text">
             {{ texts.intro }}
           </p>
-          <PrimaryButton caption="Buchen" />
+          <PrimaryButton caption="Buchen" route="#accommodation" />
         </div>
         <img class="intro-img" src="@/assets/img/photo-stack-2.png" />
       </div>
@@ -58,7 +58,7 @@ export default {
     return {
       multipleAccommodations: this.accommodations.length - 1,
     };
-  },
+  }
 };
 </script>
 
@@ -144,7 +144,7 @@ svg {
 
         .intro-img {
           align-self: center;
-          margin-top: 0;
+          margin-top: 80px;
           margin-bottom: 0;
           min-width: 450px;
           max-width: 55%;

@@ -1,15 +1,15 @@
 <template>
-  <button>{{ caption }}</button>
+  <a :href="route">{{ caption }}</a>
 </template>
 
 <script>
 export default {
-  props: ["caption"],
+  props: ["caption", "route"],
 };
 </script>
 
 <style lang="scss" scoped>
-button {
+a {
   background-color: $primary-color;
   border: none;
   color: white;
