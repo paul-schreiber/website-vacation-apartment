@@ -1,6 +1,6 @@
-# website-ferienwohnung
+# website-vacation-apartment
 
-static generic SPA for apartment websites
+static generic SPA for vacation apartment websites
 
 ## Build Setup
 
