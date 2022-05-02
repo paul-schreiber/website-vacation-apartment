@@ -2,7 +2,7 @@
   <div>
     <div class="tile" @click="toggleMenu">
       <header>
-        <div class="tile-title">{{ title }}</div>
+        <div class="tile-title">{{ accom.name }}</div>
         <div class="tile-icon">
           <img height="30" :src="iconPath" :alt="icon" />
         </div>
@@ -10,15 +10,15 @@
       <div class="tile-content">
         <div class="tile-details">
           <ul>
-            <li v-if="rooms.livingroom">{{ rooms.livingroom }}x Wohnzimmer</li>
-            <li v-if="rooms.bathroom">{{ rooms.bathroom }}x Bad</li>
-            <li v-if="rooms.bedroomOneBed || rooms.bedroomTwoBed">
-              {{ rooms.bedroomOneBed + rooms.bedroomTwoBed }}x Schlafzimmer({{
+            <li v-if="accom.rooms.livingroom">{{ accom.rooms.livingroom }}x Wohnzimmer</li>
+            <li v-if="accom.rooms.bathroom">{{ accom.rooms.bathroom }}x Bad</li>
+            <li v-if="accom.rooms.bedroomOneBed || accom.rooms.bedroomTwoBed">
+              {{ accom.rooms.bedroomOneBed + accom.rooms.bedroomTwoBed }}x Schlafzimmer({{
                 bedCount
               }}
               Betten)
             </li>
-            <li v-if="rooms.kitchen">{{ rooms.kitchen }}x Küche</li>
+            <li v-if="accom.rooms.kitchen">{{ accom.rooms.kitchen }}x Küche</li>
           </ul>
         </div>
       </div>
@@ -29,13 +29,13 @@
         <PrimaryButton caption="Details" />
       </footer>
     </div>
-    <Popover :isVisible="showDetails" :toggleMenu="toggleMenu"/>
+    <Popover :isVisible="showDetails" :toggleMenu="toggleMenu" :accom="accom"/>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["title", "icon", "rooms", "priceCatalogue"],
+  props: ["accom"],
   data() {
     return {
       isSummer: true,
@@ -44,18 +44,18 @@ export default {
   },
   computed: {
     cheapestPrice() {
-      let { basePrice, pricePerPerson } = this.priceCatalogue.summer;
-      return basePrice + pricePerPerson + this.priceCatalogue.cleaningFee;
+      let { basePrice, pricePerPerson } = this.accom.priceCatalogue.summer;
+      return basePrice + pricePerPerson + this.accom.priceCatalogue.cleaningFee;
     },
     iconPath() {
-      if (!this.icon) {
+      if (!this.accom.icon) {
         return;
       }
-      return require(`@/assets/img/${this.icon}.png`);
+      return require(`@/assets/img/${this.accom.icon}.png`);
     },
     bedCount() {
       if (this.rooms)
-        return this.rooms.bedroomOneBed + this.rooms.bedroomTwoBed * 2;
+        return this.accom.rooms.bedroomOneBed + this.accom.rooms.bedroomTwoBed * 2;
     },
   },
   methods: {
@@ -63,7 +63,7 @@ export default {
       this.showDetails = !this.showDetails
     },
     getPrice(startDate, endDate, persons) {
-      return this.calculatePrice(5, 5, this.priceCatalogue, this.isSummer);
+      return this.calculatePrice(5, 5, this.accom.priceCatalogue, this.isSummer);
     },
     calculatePrice(days, persons, priceCatalogue, isSummer) {
       let { basePrice, pricePerPerson } = isSummer

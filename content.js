@@ -20,7 +20,15 @@ export default {
                 bedroomTwoBed: 1,
                 kitchen: 1,
             },
-            prices: {
+            equipment:
+            {
+                wifi: true,
+                tv: true,
+                laundry: true,
+                garden: true,
+                custom: []
+            },
+            priceCatalogue: {
                 summer: {
                     basePrice: 20,
                     pricePerPerson: 15,
@@ -51,7 +59,7 @@ export default {
                 bedroomTwoBed: 2,
                 kitchen: 1,
             },
-            prices: {
+            priceCatalogue: {
                 summer: {
                     basePrice: 45,
                     pricePerPerson: 20,

@@ -1,13 +1,17 @@
 <template>
   <div class="popover" :class="[isVisible ? 'visible' : '']">
     <div class="overlay" @click="toggleMenu"></div>
-    <div class="popover-content"></div>
+    <div class="popover-content">
+      <AccommodationDetailView :accom="accom"/>
+    </div>
   </div>
 </template>
 
 <script>
+import AccommodationDetailView from './AccommodationDetailView.vue';
 export default {
-  props: ["isVisible", "toggleMenu"],
+  components: { AccommodationDetailView },
+  props: ["isVisible", "toggleMenu", "accom"],
 };
 </script>
 
@@ -40,7 +44,9 @@ export default {
 .popover-content {
   z-index: 4;
   background-color: $light-background-color;
-  width: 70%;
+  padding: $margin-big;
+  max-width: 700px;
+  width: 700px;
   height: 60%;
   border-radius: 20px;
   box-shadow: $soft-shadow;

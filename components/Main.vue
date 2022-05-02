@@ -31,10 +31,7 @@
       <div class="tile-container">
         <Tile
           v-for="accom in accommodations"
-          :title="accom.name"
-          :icon="accom.icon"
-          :rooms="accom.rooms"
-          :priceCatalogue="accom.prices"
+          :accom="accom"
           :key="accom.name"
         />
       </div>
