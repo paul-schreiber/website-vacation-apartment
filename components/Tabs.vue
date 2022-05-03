@@ -43,9 +43,6 @@ export default {
 
 <style lang="scss" scoped>
 .tabs-container {
-
-    margin-bottom: $margin-big;
-
   .tabs-header {
       margin-bottom: $margin-medium;
     .tab {
@@ -61,7 +58,7 @@ export default {
       flex-direction: column;
 
       &:hover {
-        background-color: rgb(243, 243, 243);
+        background-color: $light-hover-color;
       }
 
       &.active {

@@ -45,7 +45,7 @@ export default {
     component: 'Fa',
     suffix: true,
     icons: {
-      solid: [ 'faPhone', 'faEnvelope']
+      solid: [ 'faPhone', 'faEnvelope', 'faCalendar', 'faPlus', 'faMinus']
     }
   },
 
