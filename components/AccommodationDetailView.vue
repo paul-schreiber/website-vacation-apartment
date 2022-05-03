@@ -14,7 +14,7 @@
         <h3>Reisedaten:</h3>
         <div class="date-picker">
           <span class="input-caption">Datum:</span>
-          <DatePicker v-model="dateRange" is-range color="red">
+          <DatePicker v-model="dateRange" is-range >
             <template v-slot="{ inputValue, togglePopover }">
               <div class="date-input">
                 <button @click="togglePopover()" class="icon-button">
