@@ -1,13 +1,15 @@
 <template>
   <div class="detail-container">
     <header>
-      <h2>{{ accom.name }}</h2>
+      <h2>Ferienwohnung {{ accom.name }}</h2>
       <div class="tile-icon">
-        <img height="30" :src="iconPath" :alt="icon" />
+        <img height="30" :src="iconPath" :alt="accom.icon" />
       </div>
     </header>
     <div class="content">
-      <section></section>
+      <section>
+          <Tabs :tabs="tabs" />
+      </section>
       <section>
         <h3>Reisedaten:</h3>
       </section>
@@ -21,6 +23,24 @@
 <script>
 export default {
   props: ["accom"],
+  data () {
+      return {
+          tabs: [
+              {
+                  name: 'Zimmer',
+                  content: 'TEST1'
+              },
+              {
+                  name: 'Ausstattung',
+                  content: 'TEST2'
+              },
+              {
+                  name: 'Gallerie',
+                  content: 'TEST3'
+              }
+          ]
+      }
+  },
   computed: {
     iconPath() {
       if (!this.accom.icon) {

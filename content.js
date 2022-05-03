@@ -11,7 +11,7 @@ export default {
     mail: "pension-mustermann@mustermann.com",
     accommodations: [
         {
-            name: "FW Hofidylle",
+            name: "Hofidylle",
             icon: "bed",
             rooms: {
                 livingroom: 1,
@@ -50,7 +50,7 @@ export default {
             }
         },
         {
-            name: "FW Urlaubsparadies",
+            name: "Urlaubsparadies",
             icon: "armchair",
             rooms: {
                 livingroom: 2,

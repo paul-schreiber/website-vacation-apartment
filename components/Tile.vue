@@ -2,9 +2,9 @@
   <div>
     <div class="tile" @click="toggleMenu">
       <header>
-        <div class="tile-title">{{ accom.name }}</div>
+        <div class="tile-title">FW {{ accom.name }}</div>
         <div class="tile-icon">
-          <img height="30" :src="iconPath" :alt="icon" />
+          <img height="30" :src="iconPath" :alt="accom.icon" />
         </div>
       </header>
       <div class="tile-content">
