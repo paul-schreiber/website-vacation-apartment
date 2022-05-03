@@ -12,29 +12,31 @@
       </section>
       <section class="detail-section">
         <h3>Reisedaten:</h3>
-        <div class="date-picker">
-          <span class="input-caption">Datum:</span>
-          <DatePicker v-model="dateRange" is-range >
-            <template v-slot="{ inputValue, togglePopover }">
-              <div class="date-input">
-                <button @click="togglePopover()" class="icon-button">
-                  <fa-icon class="mr-s" icon="calendar" />
-                </button>
-                <input
-                  @click="togglePopover()"
-                  :value="`${inputValue.start} - ${inputValue.end}`"
-                  readonly
-                />
-              </div> </template
-          ></DatePicker>
-        </div>
-        <CountPicker
-          :value.sync="personCount"
-          min="1"
-          :max="maxBeds"
-          caption="Personen"
-          @updateCount="updateCount"
-        />
+        <form class="travel-info-form">
+          <div class="date-picker">
+            <span class="input-caption">Datum:</span>
+            <DatePicker v-model="dateRange" is-range>
+              <template v-slot="{ inputValue, togglePopover }">
+                <div class="date-input">
+                  <button @click="togglePopover()" class="icon-button">
+                    <fa-icon class="mr-s" icon="calendar" />
+                  </button>
+                  <input
+                    @click="togglePopover()"
+                    :value="`${inputValue.start} - ${inputValue.end}`"
+                    readonly
+                  />
+                </div> </template
+            ></DatePicker>
+          </div>
+          <CountPicker
+            :value.sync="personCount"
+            min="1"
+            :max="maxBeds"
+            caption="Personen"
+            @updateCount="updateCount"
+          />
+        </form>
       </section>
       <section class="detail-section">
         <h3>Preis:</h3>
@@ -89,7 +91,6 @@ export default {
   },
   methods: {
     updateCount(newCount) {
-      console.log(this.maxBeds);
       this.personCount = newCount;
     },
   },
@@ -100,7 +101,7 @@ export default {
 h2,
 h3 {
   margin-top: 0px;
-  margin-bottom: $margin-big;
+  margin-bottom: $margin-medium;
 }
 
 .input-caption {
@@ -118,22 +119,30 @@ h3 {
     margin-bottom: $margin-big;
   }
 
-  .date-input {
-    width: fit-content;
-    padding: 0px;
-    border-radius: 10px;
-    border: solid 1px #eaeaea;
-    background-color: white;
-    padding: $margin-small;
-    cursor: pointer;
+  .travel-info-form {
+    display: flex;
+  }
 
-    input,
-    .icon-button {
-      margin: 0;
-      font-size: $fs-normal;
-      border: none;
+  .date-picker {
+      margin-right: $margin-medium;
+      margin-bottom: $margin-medium;
+    .date-input {
+      width: fit-content;
+      padding: 0px;
+      border-radius: 10px;
+      border: solid 1px #eaeaea;
       background-color: white;
+      padding: $margin-small;
       cursor: pointer;
+
+      input,
+      .icon-button {
+        margin: 0;
+        font-size: $fs-normal;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+      }
     }
   }
 }

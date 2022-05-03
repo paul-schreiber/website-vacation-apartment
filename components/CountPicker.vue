@@ -2,11 +2,11 @@
   <div>
     <span class="input-caption">{{ caption }}:</span>
     <div class="count-picker">
-      <button @click="increment" class="icon-button">
+      <button @click="increment" class="icon-button" type="button">
         <fa-icon class="mr-s" icon="plus" />
       </button>
       <input :value="value" readonly />
-      <button @click="decrement" class="icon-button">
+      <button @click="decrement" class="icon-button" type="button">
         <fa-icon class="mr-s" icon="minus" />
       </button>
     </div>
@@ -29,8 +29,8 @@ export default {
 
 <style lang="scss" scoped>
 .input-caption {
-    font-size: $fs-tiny;
-    font-weight: bold;
+  font-size: $fs-tiny;
+  font-weight: bold;
 }
 
 .count-picker {
@@ -42,7 +42,6 @@ export default {
   padding: $margin-small;
   cursor: pointer;
 
-  input,
   .icon-button {
     margin: 0;
     font-size: $fs-tiny;
@@ -60,6 +59,8 @@ export default {
     font-size: $fs-normal;
     width: 20px;
     text-align: center;
+    border: none;
+    background-color: white;
   }
 }
 </style>
