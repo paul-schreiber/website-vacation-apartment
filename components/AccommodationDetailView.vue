@@ -40,6 +40,7 @@
       </section>
       <section class="detail-section">
         <h3>Preis:</h3>
+        <Galery :imageSources="sources" />
       </section>
     </div>
   </div>
@@ -55,20 +56,7 @@ export default {
   props: ["accom"],
   data() {
     return {
-      tabs: [
-        {
-          name: "Zimmer",
-          content: "TEST1",
-        },
-        {
-          name: "Ausstattung",
-          content: "TEST2",
-        },
-        {
-          name: "Gallerie",
-          content: "TEST3",
-        },
-      ],
+      sources: ["photo-stack.png"],
       dateRange: {
         start: new Date(2020, 0, 1),
         end: new Date(2020, 0, 5),
@@ -87,6 +75,25 @@ export default {
       return (
         this.accom.rooms.bedroomOneBed + this.accom.rooms.bedroomTwoBed * 2
       );
+    },
+    getRoomInfos() {
+      return "<div>Hello World</div>";
+    },
+    tabs() {
+      return [
+        {
+          name: "Zimmer",
+          content: this.getRoomInfos,
+        },
+        {
+          name: "Ausstattung",
+          content: "TEST2",
+        },
+        {
+          name: "Gallerie",
+          content: "TEST3",
+        },
+      ];
     },
   },
   methods: {
@@ -124,8 +131,8 @@ h3 {
   }
 
   .date-picker {
-      margin-right: $margin-medium;
-      margin-bottom: $margin-medium;
+    margin-right: $margin-medium;
+    margin-bottom: $margin-medium;
     .date-input {
       width: fit-content;
       padding: 0px;
