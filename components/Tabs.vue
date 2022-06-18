@@ -3,19 +3,19 @@
     <header class="tabs-header">
       <nav>
         <button
-          @click="setActiveTab(tab.name)"
+          @click="setActiveTab(tab)"
           v-for="tab in tabs"
-          :key="tab.name"
+          :key="tab"
           class="tab"
-          :class="{ active: tab.name == activeTabName }"
-          :data-text="tab.name"
+          :class="{ active: tab == activeTabName }"
+          :data-text="tab"
         >
-          {{ tab.name }}
+          {{ tab }}
         </button>
       </nav>
     </header>
     <div class="tab-content">
-      {{ currentContent }}
+      <slot :name="this.activeTabName"></slot>
     </div>
   </div>
 </template>
@@ -25,17 +25,12 @@ export default {
   props: ["tabs"],
   data() {
     return {
-      activeTabName: this.tabs[0].name,
+      activeTabName: this.tabs[0],
     };
   },
   methods: {
     setActiveTab(tabName) {
       this.activeTabName = tabName;
-    },
-  },
-  computed: {
-    currentContent() {
-      return this.tabs.find((tab) => tab.name == this.activeTabName).content;
     },
   },
 };
@@ -81,6 +76,10 @@ export default {
         }
       }
     }
+  }
+  .tab-content {
+    padding-left: $margin-small;
+    height: 78px;
   }
 }
 </style>

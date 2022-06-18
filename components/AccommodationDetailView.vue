@@ -8,7 +8,32 @@
     </header>
     <div class="content">
       <section class="detail-section">
-        <Tabs :tabs="tabs" />
+        <Tabs :tabs="tabs">
+          <template v-slot:[tabs[0]]>
+            <ul>
+              <li v-if="accom.rooms.livingroom">
+                {{ accom.rooms.livingroom }}x Wohnzimmer
+              </li>
+              <li v-if="accom.rooms.bathroom">
+                {{ accom.rooms.bathroom }}x Bad
+              </li>
+              <li v-if="accom.rooms.bedroomOneBed || accom.rooms.bedroomTwoBed">
+                {{ accom.rooms.bedroomOneBed + accom.rooms.bedroomTwoBed }}x
+                Schlafzimmer({{ bedCount }}
+                Betten)
+              </li>
+              <li v-if="accom.rooms.kitchen">
+                {{ accom.rooms.kitchen }}x Küche
+              </li>
+            </ul>
+          </template>
+          <template v-slot:[tabs[1]]>
+            <IconList :items="accom.equipment" />
+          </template>
+          <template v-slot:[tabs[2]]>
+            <ListItem title="Galerie" iconName="tv" />
+          </template>
+        </Tabs>
       </section>
       <section class="detail-section">
         <h3>Reisedaten:</h3>
@@ -76,24 +101,8 @@ export default {
         this.accom.rooms.bedroomOneBed + this.accom.rooms.bedroomTwoBed * 2
       );
     },
-    getRoomInfos() {
-      return "<div>Hello World</div>";
-    },
     tabs() {
-      return [
-        {
-          name: "Zimmer",
-          content: this.getRoomInfos,
-        },
-        {
-          name: "Ausstattung",
-          content: "TEST2",
-        },
-        {
-          name: "Gallerie",
-          content: "TEST3",
-        },
-      ];
+      return ["Zimmer", "Ausstattung", "Galerie"];
     },
   },
   methods: {
@@ -124,6 +133,14 @@ h3 {
 
   .detail-section {
     margin-bottom: $margin-big;
+
+    ul {
+      padding: 0px;
+      li {
+        list-style: none;
+        font-weight: $fw-light;
+      }
+    }
   }
 
   .travel-info-form {

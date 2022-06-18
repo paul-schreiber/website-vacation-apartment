@@ -21,13 +21,24 @@ export default {
                 kitchen: 1,
             },
             equipment:
-            {
-                wifi: true,
-                tv: true,
-                laundry: true,
-                garden: true,
-                custom: []
-            },
+                [
+                    {
+                        name: 'Wifi',
+                        icon: 'wifi'
+                    },
+                    {
+                        name: 'Fernseher',
+                        icon: 'tv'
+                    },
+                    {
+                        name: 'Waschmaschine',
+                        icon: 'shirt'
+                    },
+                    {
+                        name: 'Gartennutzung',
+                        icon: 'seedling'
+                    }
+                ],
             priceCatalogue: {
                 summer: {
                     basePrice: 20,
@@ -59,6 +70,21 @@ export default {
                 bedroomTwoBed: 2,
                 kitchen: 1,
             },
+            equipment:
+                [
+                    {
+                        name: 'Wifi',
+                        icon: 'wifi'
+                    },
+                    {
+                        name: 'Fernseher',
+                        icon: 'tv'
+                    },
+                    {
+                        name: 'Gartennutzung',
+                        icon: 'seedling'
+                    }
+                ],
             priceCatalogue: {
                 summer: {
                     basePrice: 45,

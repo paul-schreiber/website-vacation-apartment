@@ -2,12 +2,12 @@
   <div>
     <span class="input-caption">{{ caption }}:</span>
     <div class="count-picker">
-      <button @click="increment" class="icon-button" type="button">
-        <fa-icon class="mr-s" icon="plus" />
-      </button>
-      <input :value="value" readonly />
       <button @click="decrement" class="icon-button" type="button">
         <fa-icon class="mr-s" icon="minus" />
+      </button>
+      <input :value="value" readonly />
+      <button @click="increment" class="icon-button" type="button">
+        <fa-icon class="mr-s" icon="plus" />
       </button>
     </div>
   </div>
