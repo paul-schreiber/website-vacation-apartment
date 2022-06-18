@@ -83,8 +83,8 @@ export default {
     return {
       sources: ["photo-stack.png"],
       dateRange: {
-        start: new Date(2020, 0, 1),
-        end: new Date(2020, 0, 5),
+        start: new Date(),
+        end: new Date().setDate(new Date().getDate() + 3),
       },
       personCount: 1,
     };
