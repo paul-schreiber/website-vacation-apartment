@@ -45,7 +45,7 @@ export default {
                     pricePerPerson: 15,
                 },
                 winter: {
-                    basePrice: 40,
+                    basePrice: 30,
                     pricePerPerson: 15,
                 },
                 cleaningFee: 5,

@@ -45,9 +45,10 @@ export default {
   z-index: 4;
   background-color: $light-background-color;
   padding: $margin-big;
-  max-width: 700px;
-  width: 700px;
-  height: 60%;
+  max-width: 600px;
+  width: 600px;
+
+  //min-height: 500px;
   border-radius: 20px;
   box-shadow: $soft-shadow;
 }

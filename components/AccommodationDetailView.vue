@@ -7,7 +7,7 @@
       </div>
     </header>
     <div class="content">
-      <section class="detail-section">
+      <section class="content-section">
         <Tabs :tabs="tabs">
           <template v-slot:[tabs[0]]>
             <ul>
@@ -18,12 +18,10 @@
                 {{ accom.rooms.bathroom }}x Bad
               </li>
               <li v-if="accom.rooms.bedroomOneBed">
-                {{ accom.rooms.bedroomOneBed}}x
-                Schlafzimmer (1 Bett)
+                {{ accom.rooms.bedroomOneBed }}x Schlafzimmer (1 Bett)
               </li>
               <li v-if="accom.rooms.bedroomTwoBed">
-                {{ accom.rooms.bedroomTwoBed}}x
-                Schlafzimmer (2 Betten)
+                {{ accom.rooms.bedroomTwoBed }}x Schlafzimmer (2 Betten)
               </li>
               <li v-if="accom.rooms.kitchen">
                 {{ accom.rooms.kitchen }}x Küche
@@ -38,7 +36,7 @@
           </template>
         </Tabs>
       </section>
-      <section class="detail-section">
+      <section class="content-section">
         <h3>Reisedaten:</h3>
         <form class="travel-info-form">
           <div class="date-picker">
@@ -66,9 +64,28 @@
           />
         </form>
       </section>
-      <section class="detail-section">
+      <section class="content-section">
         <h3>Preis:</h3>
-        {{this.overnightStays}}
+        <div class="billing-line">
+          <span>
+            {{ getCosts.pricePerNight }}€ x {{ this.overnightStays }}
+            <span v-if="this.overnightStays > 1">Nächte</span>
+            <span v-if="this.overnightStays <= 1">Nacht</span>
+          </span>
+          <span>{{ getCosts.priceAllNights }}€</span>
+        </div>
+        <div class="billing-line">
+          <span>Servicegebühr</span>
+          <span>{{ getCosts.cleaningFee }}€</span>
+        </div>
+        <div class="billing-divider"></div>
+        <div class="billing-line bold">
+          <span>Gesamt</span>
+          <span>{{ getCosts.finalPrice }}€</span>
+        </div>
+      </section>
+      <section class="content-section action-button">
+      <PrimaryButton caption="Anfragen"/>
       </section>
     </div>
   </div>
@@ -87,7 +104,7 @@ export default {
       sources: ["photo-stack.png"],
       dateRange: {
         start: new Date(),
-        end: new Date(),
+        end: new Date(new Date().setDate(new Date().getDate() + 3)),
       },
       personCount: 1,
     };
@@ -108,14 +125,44 @@ export default {
       return ["Zimmer", "Ausstattung", "Galerie"];
     },
     overnightStays() {
-      let current = (Date.parse(this.dateRange.start) - Date.parse(this.dateRange.start)) / 86400000
-      console.log(current)
-      return current
-    }
+      let end = Date.parse(this.dateRange.end);
+      let start = Date.parse(this.dateRange.start);
+      return (end - start) / 86400000;
+    },
+    getDiscount() {
+      const discount = this.accom.priceCatalogue.discounts.reduce(
+        (prev, curr) => {
+          return prev.days < curr.days && curr.days <= this.overnightStays ? curr : prev;
+        },
+        { days: 0, percentage: 0 }
+      );
+      return discount.percentage;
+    },
+    getCosts() {
+      const priceCatalogue = this.isSummer()
+        ? this.accom.priceCatalogue.summer
+        : this.priceCatalogue.winter;
+      const pricePerNight =
+        priceCatalogue.basePrice +
+        this.personCount * priceCatalogue.pricePerPerson;
+      let discountedPricePerNight = Math.round(pricePerNight * (100 - this.getDiscount)/100);
+      const priceAllNights = discountedPricePerNight * this.overnightStays;
+      let finalPrice = priceAllNights + this.accom.priceCatalogue.cleaningFee;
+
+      return {
+        pricePerNight: discountedPricePerNight,
+        priceAllNights,
+        cleaningFee: this.accom.priceCatalogue.cleaningFee,
+        finalPrice: finalPrice
+      };
+    },
   },
   methods: {
     updateCount(newCount) {
       this.personCount = newCount;
+    },
+    isSummer() {
+      return true;
     },
   },
 };
@@ -139,8 +186,10 @@ h3 {
     justify-content: space-between;
   }
 
-  .detail-section {
-    margin-bottom: $margin-big;
+  .content-section {
+    &:not(:first-child) {
+      margin-top: $margin-big;
+    }
 
     ul {
       padding: 0px;
@@ -148,6 +197,22 @@ h3 {
         list-style: none;
         font-weight: $fw-light;
       }
+    }
+
+    .billing-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $margin-tiny;
+
+      &.bold {
+        font-weight: 600;
+      }
+    }
+
+    .billing-divider {
+      margin-top: $margin-small;
+      margin-bottom: $margin-small;
+      border-bottom: 1px solid lightgray;
     }
   }
 
@@ -176,6 +241,11 @@ h3 {
         cursor: pointer;
       }
     }
+  }
+
+  .action-button {
+    display: flex;
+    justify-content: end;
   }
 }
 </style>
