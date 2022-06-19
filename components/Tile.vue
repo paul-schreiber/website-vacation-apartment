@@ -13,10 +13,7 @@
             <li v-if="accom.rooms.livingroom">{{ accom.rooms.livingroom }}x Wohnzimmer</li>
             <li v-if="accom.rooms.bathroom">{{ accom.rooms.bathroom }}x Bad</li>
             <li v-if="accom.rooms.bedroomOneBed || accom.rooms.bedroomTwoBed">
-              {{ accom.rooms.bedroomOneBed + accom.rooms.bedroomTwoBed }}x Schlafzimmer({{
-                bedCount
-              }}
-              Betten)
+              {{ accom.rooms.bedroomOneBed + accom.rooms.bedroomTwoBed }}x Schlafzimmer
             </li>
             <li v-if="accom.rooms.kitchen">{{ accom.rooms.kitchen }}x Küche</li>
           </ul>
@@ -52,11 +49,7 @@ export default {
         return;
       }
       return require(`@/assets/img/${this.accom.icon}.png`);
-    },
-    bedCount() {
-      if (this.rooms)
-        return this.accom.rooms.bedroomOneBed + this.accom.rooms.bedroomTwoBed * 2;
-    },
+    }
   },
   methods: {
     toggleMenu(){

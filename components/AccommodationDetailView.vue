@@ -17,10 +17,13 @@
               <li v-if="accom.rooms.bathroom">
                 {{ accom.rooms.bathroom }}x Bad
               </li>
-              <li v-if="accom.rooms.bedroomOneBed || accom.rooms.bedroomTwoBed">
-                {{ accom.rooms.bedroomOneBed + accom.rooms.bedroomTwoBed }}x
-                Schlafzimmer({{ bedCount }}
-                Betten)
+              <li v-if="accom.rooms.bedroomOneBed">
+                {{ accom.rooms.bedroomOneBed}}x
+                Schlafzimmer (1 Bett)
+              </li>
+              <li v-if="accom.rooms.bedroomTwoBed">
+                {{ accom.rooms.bedroomTwoBed}}x
+                Schlafzimmer (2 Betten)
               </li>
               <li v-if="accom.rooms.kitchen">
                 {{ accom.rooms.kitchen }}x Küche
@@ -31,7 +34,7 @@
             <IconList :items="accom.equipment" />
           </template>
           <template v-slot:[tabs[2]]>
-            <ListItem title="Galerie" iconName="tv" />
+            <Galery :imageSources="sources" />
           </template>
         </Tabs>
       </section>
@@ -65,7 +68,7 @@
       </section>
       <section class="detail-section">
         <h3>Preis:</h3>
-        <Galery :imageSources="sources" />
+        {{this.overnightStays}}
       </section>
     </div>
   </div>
@@ -84,7 +87,7 @@ export default {
       sources: ["photo-stack.png"],
       dateRange: {
         start: new Date(),
-        end: new Date().setDate(new Date().getDate() + 3),
+        end: new Date(),
       },
       personCount: 1,
     };
@@ -104,6 +107,11 @@ export default {
     tabs() {
       return ["Zimmer", "Ausstattung", "Galerie"];
     },
+    overnightStays() {
+      let current = (Date.parse(this.dateRange.start) - Date.parse(this.dateRange.start)) / 86400000
+      console.log(current)
+      return current
+    }
   },
   methods: {
     updateCount(newCount) {
