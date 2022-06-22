@@ -12,8 +12,8 @@
         fill="#1ebd92"
       />
     </svg>
-    <div class="footer-content">
-      <div>
+    <div class="footer-content-wrapper">
+      <div class="footer-content">
         <div class="logo" id="contact">
           <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
         </div>
@@ -35,15 +35,17 @@
         </address>
       </div>
     </div>
-    <div class="sub-footer-content">
-      <div>© {{ name }}</div>
-      <div>Datenschutz</div>
-      <div>Impressum</div>
-      <div>
-        Design by
-        <a class="contact-link" href="https://github.com/paul-schreiber"
-          >Paul Schreiber</a
-        >
+    <div class="sub-footer-content-wrapper">
+      <div class="sub-footer-content">
+        <div>© {{ name }}</div>
+        <div>Datenschutz</div>
+        <div>Impressum</div>
+        <div>
+          Design by
+          <a class="contact-link" href="https://github.com/paul-schreiber"
+            >Paul Schreiber</a
+          >
+        </div>
       </div>
     </div>
   </footer>
@@ -80,12 +82,16 @@ footer {
   background-color: $light-background-color;
 }
 
+.footer-content-wrapper {
+  z-index: 1;
+  background-color: $primary-color;
+}
+
 .footer-content {
   padding: $margin-medium $margin-big;
   max-width: $max-width;
+  margin: auto;
   margin-top: -2px;
-  z-index: 1;
-  background-color: $primary-color;
   height: 280px;
   color: white;
   display: flex;
@@ -104,14 +110,17 @@ footer {
   }
 }
 
+.sub-footer-content-wrapper {
+  background-color: $secondary-color;
+}
 .sub-footer-content {
+  margin: auto;
   padding: $margin-medium $margin-big;
   max-width: $max-width;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: $secondary-color;
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: $fw-light;

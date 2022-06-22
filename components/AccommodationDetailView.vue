@@ -68,20 +68,20 @@
         <h3>Preis:</h3>
         <div class="billing-line">
           <span>
-            {{ getCosts.pricePerNight }}€ x {{ this.overnightStays }}
+            {{ getCosts.pricePerNight }} € x {{ this.overnightStays }}
             <span v-if="this.overnightStays > 1">Nächte</span>
             <span v-if="this.overnightStays <= 1">Nacht</span>
           </span>
-          <span>{{ getCosts.priceAllNights }}€</span>
+          <span>{{ getCosts.priceAllNights }} €</span>
         </div>
         <div class="billing-line">
           <span>Servicegebühr</span>
-          <span>{{ getCosts.cleaningFee }}€</span>
+          <span>{{ getCosts.cleaningFee }} €</span>
         </div>
         <div class="billing-divider"></div>
         <div class="billing-line bold">
           <span>Gesamt</span>
-          <span>{{ getCosts.finalPrice }}€</span>
+          <span>{{ getCosts.finalPrice }} €</span>
         </div>
       </section>
       <section class="content-section action-button">
@@ -104,7 +104,7 @@ export default {
       sources: ["photo-stack.png"],
       dateRange: {
         start: new Date(),
-        end: new Date(new Date().setDate(new Date().getDate() + 3)),
+        end: new Date(new Date().setDate(new Date().getDate() + 1)),
       },
       personCount: 1,
     };
