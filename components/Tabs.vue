@@ -79,7 +79,7 @@ export default {
   }
   .tab-content {
     padding-left: $margin-small;
-    height: 90px;
+    height: 72px;
   }
 }
 </style>

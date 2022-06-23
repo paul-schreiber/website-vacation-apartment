@@ -2,7 +2,6 @@
   <div class="list-item">
     <div class="icon"><fa-icon class="mr-s" :icon="icon" /> </div>
     <span>{{ title }}</span>
-    {{ iconName }}
   </div>
 </template>
 
