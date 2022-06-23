@@ -1,22 +1,40 @@
 <template>
   <div>
-    <form>
+    <form novalidate onsubmit="return false">
       <section class="form-section">
-        <InputWithCaption
+        <UserInputWithCaption
           caption="Deine E-Mail"
-          name="email"
-          type="email"
-          placeholder="Wie können wir dich erreichen?"
           isMandatory
-        />
+          :hasError="mailError"
+        >
+          <input
+            v-model="email"
+            aria-placeholder="Wie können wir dich erreichen?"
+            placeholder="Wie können wir dich erreichen?"
+            name="email"
+            type="email"
+            @focus="mailError = false"
+          />
+        </UserInputWithCaption>
       </section>
       <section class="form-section">
-        <TextareaWithCaption
+        <UserInputWithCaption
           caption="Sonstige Anmerkungen"
-          name="email"
-          type="email"
-          placeholder="Hast du uns noch was zu sagen?"
           :isMandatory="false"
+        >
+          <textarea
+            v-model="additionalNotes"
+            aria-placeholder="Hast du uns noch was zu sagen?"
+            placeholder="Hast du uns noch was zu sagen?"
+            name="additionalNotes"
+          />
+        </UserInputWithCaption>
+      </section>
+      <section class="form-section captcha-container">
+        <VueFriendlyCaptcha
+          :sitekey="siteKey"
+          @done="isHuman = true"
+          language="de"
         />
       </section>
       <div class="action-bar">
@@ -25,14 +43,24 @@
           :onClick="navToPlanning"
           type="secondary"
         />
-        <ActionButton caption="Anfragen" :onClick="sendMail" />
+        <ActionButton
+          caption="Anfragen"
+          :onClick="submitForm"
+          :disabled="!formIsFilled"
+        />
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import VueFriendlyCaptcha from "@somushq/vue-friendly-captcha";
+import apiKeys from "@/api-keys";
+
 export default {
+  components: {
+    VueFriendlyCaptcha,
+  },
   props: {
     navToPlanning: Function,
     sendMail: Function,
@@ -40,14 +68,42 @@ export default {
   data() {
     return {
       email: "",
-      additionalNotes: "Notes",
+      additionalNotes: "",
+      siteKey: apiKeys.friendlyCaptcha.siteKey,
+      isHuman: false,
+      mailError: false,
     };
   },
-  methods: {
-    submitForm() {
-      checkForm();
+  computed: {
+    formIsFilled() {
+      return this.email != "" && this.isHuman;
     },
-    checkForm() {},
+    isMailInputValid() {
+      return this.email && this.validateMail(this.email);
+    },
+  },
+  methods: {
+    sanitiseText(value) {
+      return value.replace("<", "&lt;").replace(">", "&gt;");
+    },
+    validateMail(mail) {
+      const mailRegEx =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return mailRegEx.test(mail);
+    },
+    submitForm() {
+      if (this.checkForm()) {
+        this.sendMail(this.email, this.sanitiseText(this.additionalNotes));
+      }
+    },
+    checkForm() {
+      if (this.isHuman && this.isMailInputValid) {
+        return true;
+      } else {
+        this.mailError = true;
+        return false;
+      }
+    },
   },
 };
 </script>
@@ -56,4 +112,45 @@ export default {
 .form-section {
   margin-bottom: $margin-medium;
 }
+
+.captcha-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: $margin-small;
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+//Override captcha styles (scoped)
+.frc-captcha {
+  justify-self: right;
+  background-color: transparent;
+  opacity: 75%;
+  border: none;
+  width: fit-content;
+  padding-bottom: 0px;
+}
 </style>
+
+<style lang="scss">
+//Override captcha styles (global)
+.frc-banner {
+  display: none;
+}
+
+.frc-container {
+  min-height: 0px !important;
+}
+.frc-icon {
+  margin: 0 !important;
+  width: 20px;
+  height: 20px;
+}
+
+.frc-button {
+  display: none;
+}
+</style> 

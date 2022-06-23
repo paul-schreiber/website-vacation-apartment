@@ -1,5 +1,11 @@
 <template>
-  <button @click="onClick" :class="type">{{ caption }}</button>
+  <button
+    @click="onClick"
+    :class="[type, disabled ? 'disabled' : '']"
+    :disabled="disabled"
+  >
+    {{ caption }}
+  </button>
 </template>
 
 <script>
@@ -8,8 +14,13 @@ export default {
     caption: String,
     type: {
       default: "primary",
+      type: String,
     },
     onClick: Function,
+    disabled: {
+      default: false,
+      type: Boolean,
+    },
   },
 };
 </script>
@@ -23,11 +34,14 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: $fs-normal;
-  border-radius: 15px;
+  border-radius: 16px;
+  border: solid 2px $primary-color;
   cursor: pointer;
 
-  &:hover {
-    filter: brightness(90%);
+  &:not(.disabled) {
+    &:hover {
+      filter: brightness(90%);
+    }
   }
 
   &.primary {
@@ -35,7 +49,16 @@ button {
   }
 
   &.secondary {
-    background-color: $alternative-color;
+    background-color: transparent;
+    color: $primary-color;
   }
+
+  &.disabled {
+    border: 2px solid #b8b8b8;
+    background-color: #e0e0e0;
+    color: #9c9c9c;
+    cursor: not-allowed;
+  }
+
 }
 </style>

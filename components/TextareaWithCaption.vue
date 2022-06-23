@@ -42,7 +42,6 @@ export default {
   border: solid 1px #eaeaea;
   background-color: white;
   padding: $margin-small;
-  cursor: pointer;
 
   &:focus-within {
     box-shadow: inset 0 0 0 3px $primary-color-transparent;

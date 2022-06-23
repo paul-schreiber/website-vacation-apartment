@@ -18,7 +18,8 @@ a {
   text-decoration: none;
   display: inline-block;
   font-size: $fs-normal;
-  border-radius: 15px;
+  border-radius: 16px;
+  border: solid 2px $primary-color;
   cursor: pointer;
 
   &:hover {

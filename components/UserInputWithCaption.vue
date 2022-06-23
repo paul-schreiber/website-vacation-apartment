@@ -1,14 +1,8 @@
 <template>
   <div>
-    <span class="input-caption">{{ caption }}</span>
-    <div class="input-container">
-      <input
-        :value="value"
-        :type="type"
-        :name="name"
-        :placeholder="placeholder"
-        :aria-placeholder="placeholder"
-      />
+    <span class="caption">{{ caption }}</span>
+    <div class="input-container" :class="{ showError: showError }">
+      <slot></slot>
       <span class="asterisk" v-if="isMandatory">*</span>
     </div>
   </div>
@@ -16,19 +10,26 @@
 
 <script>
 export default {
+  data() {
+    return {
+      showError: false,
+    };
+  },
   props: {
     caption: String,
-    value: String,
     isMandatory: Boolean,
-    type: String,
-    name: String,
-    placeholder: String,
+    hasError: Boolean,
+  },
+  watch: {
+    hasError(newStatus, oldStatus) {
+      this.showError = newStatus;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.input-caption {
+.caption {
   font-size: $fs-tiny;
   font-weight: bold;
 }
@@ -42,15 +43,43 @@ export default {
   border: solid 1px #eaeaea;
   background-color: white;
   padding: $margin-small;
-  cursor: pointer;
 
   &:focus-within {
     box-shadow: inset 0 0 0 3px $primary-color-transparent;
   }
 
+  &.showError {
+    box-shadow: inset 0 0 0 3px rgb(221, 59, 59, 0.5);
+    animation: wiggle 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
+  @keyframes wiggle {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-3px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(3px, 0, 0);
+    }
+  }
+
   .asterisk {
     align-self: right;
     margin-left: $margin-tiny;
+    color: rgb(221, 59, 59);
   }
 
   .icon-button {
@@ -66,7 +95,8 @@ export default {
     }
   }
 
-  input {
+  input,
+  textarea {
     font-size: $fs-normal;
     flex-grow: 1;
     text-align: left;
@@ -76,6 +106,11 @@ export default {
     &:focus {
       outline: none;
     }
+  }
+
+  textarea {
+    resize: none;
+    height: 150px;
   }
 }
 </style>

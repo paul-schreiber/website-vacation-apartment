@@ -2,7 +2,7 @@
   <div class="popover" v-if="isVisible">
     <div class="overlay" @click="toggleMenu"></div>
     <div class="popover-content">
-      <AccommodationDetailView :accom="accom" :closeAction="toggleMenu"/>
+      <AccommodationDetailView :accom="accom" :closeAction="toggleMenu" />
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
   z-index: 3;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.151);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .popover {
@@ -44,9 +44,8 @@ export default {
   padding: $margin-big;
   max-width: 600px;
   width: 600px;
-
-  //min-height: 500px;
   border-radius: 20px;
   box-shadow: $soft-shadow;
+  overflow: visible;
 }
 </style>
