@@ -5,7 +5,10 @@
         <div class="intro-container">
           <h1>{{ texts.greeting }}</h1>
           <p class="standard-text">
-            {{ texts.intro }}
+            {{ texts.intro.partOne }}
+          </p>
+          <p class="standard-text">
+            {{ texts.intro.partTwo }}
           </p>
           <PrimaryNavButton caption="Buchen" route="#accommodation" />
         </div>
