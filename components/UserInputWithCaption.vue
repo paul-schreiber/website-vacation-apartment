@@ -110,7 +110,7 @@ export default {
 
   textarea {
     resize: none;
-    height: 150px;
+    height: 120px;
   }
 }
 </style>

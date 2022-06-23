@@ -2,6 +2,18 @@
   <div>
     <form novalidate onsubmit="return false">
       <section class="form-section">
+        <UserInputWithCaption caption="Dein Name" isMandatory>
+          <input
+            v-model="userName"
+            aria-placeholder="Wie heißt du?"
+            placeholder="Wie heißt du?"
+            name="name"
+            type="text"
+            @focus="mailError = false"
+          />
+        </UserInputWithCaption>
+      </section>
+      <section class="form-section">
         <UserInputWithCaption
           caption="Deine E-Mail"
           isMandatory
@@ -24,8 +36,8 @@
         >
           <textarea
             v-model="additionalNotes"
-            aria-placeholder="Hast du uns noch was zu sagen?"
-            placeholder="Hast du uns noch was zu sagen?"
+            aria-placeholder="Willst du uns noch etwas mitteilen?"
+            placeholder="Willst du uns noch etwas mitteilen?"
             name="additionalNotes"
           />
         </UserInputWithCaption>
@@ -67,6 +79,7 @@ export default {
   },
   data() {
     return {
+      userName: "",
       email: "",
       additionalNotes: "",
       siteKey: apiKeys.friendlyCaptcha.siteKey,
@@ -93,7 +106,7 @@ export default {
     },
     submitForm() {
       if (this.checkForm()) {
-        this.sendMail(this.email, this.sanitiseText(this.additionalNotes));
+        this.sendMail(this.userName, this.email, this.sanitiseText(this.additionalNotes));
       }
     },
     checkForm() {

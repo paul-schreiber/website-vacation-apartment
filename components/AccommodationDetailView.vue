@@ -90,7 +90,14 @@
         </section>
       </div>
       <div v-else-if="bookingStatus === 'booking'">
-        <BookingView :navToPlanning="activatePlanningStatus" :sendMail="sendMail"/>
+        <BookingView
+          :navToPlanning="activatePlanningStatus"
+          :sendMail="sendMail"
+        />
+      </div>
+      <div v-else-if="bookingStatus === 'loading'"></div>
+      <div v-else-if="bookingStatus === 'sent'">
+        The message was sent! <fa-icon class="mr-s" icon="paper-plane" />
       </div>
     </div>
   </div>
@@ -100,6 +107,7 @@
 import emailjs from "@emailjs/browser";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import smoothHeight from "vue-smooth-height";
+import apiKeys from "@/api-keys";
 
 export default {
   components: {
@@ -192,27 +200,47 @@ export default {
     activateBookingStatus() {
       this.bookingStatus = "booking";
     },
-    sendMail(email, additionalNotes='') {
+    sendMail(userName, email, additionalNotes = "") {
+      this.bookingStatus = "sent";
+      setTimeout(this.closeAction, 4000);
 
-      this.closeAction()
+      const now = new Date();
 
-      if (false) {
-        emailjs
-          .sendForm(
-            "YOUR_SERVICE_ID",
-            "YOUR_TEMPLATE_ID",
-            this.$refs.form,
-            "YOUR_PUBLIC_KEY"
-          )
-          .then(
-            (result) => {
-              console.log("SUCCESS!", result.text);
-            },
-            (error) => {
-              console.log("FAILED...", error.text);
-            }
-          );
-      }
+      const templateParams = {
+        user: {
+          name: userName,
+          mail: email,
+        },
+        date: {
+          date: now.toLocaleDateString('de-DE'),
+          time: now.toLocaleTimeString('de-DE'),
+        },
+        booking: {
+          additionalNotes: additionalNotes,
+          accom: this.accom.name,
+          personCount: this.personCount,
+          dateRange: `${this.dateRange.start.toLocaleDateString('de-DE')}-${this.dateRange.end.toLocaleDateString('de-DE')}`,
+          dayCount: this.overnightStays,
+          totalPrice: this.getCosts.finalPrice,
+          pricePerNight: this.getCosts.pricePerNight,
+        },
+      };
+
+      emailjs
+        .send(
+          apiKeys.emailJS.serviceId,
+          apiKeys.emailJS.templateId,
+          templateParams,
+          apiKeys.emailJS.publicKey
+        )
+        .then(
+          (result) => {
+            console.log("SUCCESS!", result.text);
+          },
+          (error) => {
+            console.log("FAILED...", error.text);
+          }
+        );
     },
   },
 };
