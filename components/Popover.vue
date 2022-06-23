@@ -1,14 +1,14 @@
 <template>
-  <div class="popover" :class="[isVisible ? 'visible' : '']">
+  <div class="popover" v-if="isVisible">
     <div class="overlay" @click="toggleMenu"></div>
     <div class="popover-content">
-      <AccommodationDetailView :accom="accom"/>
+      <AccommodationDetailView :accom="accom" :closeAction="toggleMenu"/>
     </div>
   </div>
 </template>
 
 <script>
-import AccommodationDetailView from './AccommodationDetailView.vue';
+import AccommodationDetailView from "./AccommodationDetailView.vue";
 export default {
   components: { AccommodationDetailView },
   props: ["isVisible", "toggleMenu", "accom"],
@@ -33,12 +33,9 @@ export default {
   z-index: 4;
   width: 100%;
   height: 100%;
-  display: none;
-  &.visible {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popover-content {

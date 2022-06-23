@@ -1,16 +1,21 @@
 <template>
-  <button @click="onClick">{{ caption }} </button>
+  <button @click="onClick" :class="type">{{ caption }}</button>
 </template>
 
 <script>
 export default {
-  props: ["caption", "onClick"],
+  props: {
+    caption: String,
+    type: {
+      default: "primary",
+    },
+    onClick: Function,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 button {
-  background-color: $primary-color;
   border: none;
   color: white;
   padding: $margin-small $margin-medium;
@@ -23,6 +28,14 @@ button {
 
   &:hover {
     filter: brightness(90%);
+  }
+
+  &.primary {
+    background-color: $primary-color;
+  }
+
+  &.secondary {
+    background-color: $alternative-color;
   }
 }
 </style>

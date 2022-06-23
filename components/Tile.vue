@@ -146,7 +146,7 @@ export default {
 }
 
 @media only screen and (min-width: 800px) {
-  .tile:not(:last-child) {
+  .tile {
     margin-right: $margin-large;
   }
 }

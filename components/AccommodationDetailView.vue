@@ -41,7 +41,7 @@
           <h3>Reisedaten:</h3>
           <form class="travel-info-form">
             <div class="date-picker">
-              <span class="input-caption">Datum:</span>
+              <span class="input-caption">Datum</span>
               <DatePicker v-model="dateRange" is-range>
                 <template v-slot="{ inputValue, togglePopover }">
                   <div class="date-input">
@@ -58,14 +58,14 @@
             </div>
             <CountPicker
               :value.sync="personCount"
-              min="1"
+              min="0"
               :max="maxBeds"
               caption="Personen"
               @updateCount="updateCount"
             />
           </form>
         </section>
-        <section class="content-section">
+        <section class="content-section" v-if="personCount > 0">
           <h3>Preis:</h3>
           <div class="billing-line">
             <span>
@@ -85,20 +85,12 @@
             <span>{{ getCosts.finalPrice }} €</span>
           </div>
         </section>
-        <section class="content-section action-button">
-          <PrimaryActionButton
-            caption="Weiter"
-            :onClick="activateBookingStatus"
-          />
+        <section class="content-section action-button" v-if="personCount > 0">
+          <ActionButton caption="Weiter" :onClick="activateBookingStatus" />
         </section>
       </div>
       <div v-else-if="bookingStatus === 'booking'">
-        <input readonly />
-        <PrimaryActionButton
-          caption="Anfragen"
-          :onClick="activatePlanningStatus"
-          key="button"
-        />
+        <BookingView :navToPlanning="activatePlanningStatus" :sendMail="sendMail"/>
       </div>
     </div>
   </div>
@@ -113,9 +105,11 @@ export default {
   components: {
     DatePicker,
   },
-  props: ["accom"],
+  props: ["accom", "closeAction"],
   mixins: [smoothHeight],
   mounted() {
+    this.bookingStatus = "planning";
+
     this.$smoothElement({
       el: ".detail-container",
       hideOverflow: true,
@@ -130,7 +124,7 @@ export default {
         start: new Date(),
         end: new Date(new Date().setDate(new Date().getDate() + 1)),
       },
-      personCount: 1,
+      personCount: 0,
     };
   },
   computed: {
@@ -198,22 +192,27 @@ export default {
     activateBookingStatus() {
       this.bookingStatus = "booking";
     },
-    sendMail() {
-      emailjs
-        .sendForm(
-          "YOUR_SERVICE_ID",
-          "YOUR_TEMPLATE_ID",
-          this.$refs.form,
-          "YOUR_PUBLIC_KEY"
-        )
-        .then(
-          (result) => {
-            console.log("SUCCESS!", result.text);
-          },
-          (error) => {
-            console.log("FAILED...", error.text);
-          }
-        );
+    sendMail(email, additionalNotes='') {
+
+      this.closeAction()
+
+      if (false) {
+        emailjs
+          .sendForm(
+            "YOUR_SERVICE_ID",
+            "YOUR_TEMPLATE_ID",
+            this.$refs.form,
+            "YOUR_PUBLIC_KEY"
+          )
+          .then(
+            (result) => {
+              console.log("SUCCESS!", result.text);
+            },
+            (error) => {
+              console.log("FAILED...", error.text);
+            }
+          );
+      }
     },
   },
 };
@@ -275,6 +274,7 @@ h3 {
   .date-picker {
     margin-right: $margin-medium;
     margin-bottom: $margin-medium;
+
     .date-input {
       width: fit-content;
       padding: 0px;
@@ -284,6 +284,10 @@ h3 {
       padding: $margin-small;
       cursor: pointer;
 
+      &:focus-within {
+        box-shadow: inset 0 0 0 3px $primary-color-transparent;
+      }
+
       input,
       .icon-button {
         margin: 0;
@@ -291,6 +295,10 @@ h3 {
         border: none;
         background-color: white;
         cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
@@ -300,5 +308,4 @@ h3 {
     justify-content: end;
   }
 }
-
 </style>

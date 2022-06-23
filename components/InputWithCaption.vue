@@ -1,28 +1,28 @@
 <template>
   <div>
     <span class="input-caption">{{ caption }}</span>
-    <div class="count-picker">
-      <button @click="decrement" class="icon-button" type="button">
-        <fa-icon class="mr-s" icon="minus" />
-      </button>
-      <input :value="value" readonly />
-      <button @click="increment" class="icon-button" type="button">
-        <fa-icon class="mr-s" icon="plus" />
-      </button>
+    <div class="input-container">
+      <input
+        :value="value"
+        :type="type"
+        :name="name"
+        :placeholder="placeholder"
+        :aria-placeholder="placeholder"
+      />
+      <span class="asterisk" v-if="isMandatory">*</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["value", "min", "max", "caption"],
-  methods: {
-    increment() {
-      if (this.value < this.max) this.$emit("updateCount", this.value + 1);
-    },
-    decrement() {
-      if (this.value > this.min) this.$emit("updateCount", this.value - 1);
-    },
+  props: {
+    caption: String,
+    value: String,
+    isMandatory: Boolean,
+    type: String,
+    name: String,
+    placeholder: String,
   },
 };
 </script>
@@ -33,14 +33,25 @@ export default {
   font-weight: bold;
 }
 
-.count-picker {
-  width: fit-content;
+.input-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   padding: 0px;
   border-radius: 10px;
   border: solid 1px #eaeaea;
   background-color: white;
   padding: $margin-small;
-  cursor: default;
+  cursor: pointer;
+
+  &:focus-within {
+    box-shadow: inset 0 0 0 3px $primary-color-transparent;
+  }
+
+  .asterisk {
+    align-self: right;
+    margin-left: $margin-tiny;
+  }
 
   .icon-button {
     margin: 0;
@@ -57,11 +68,10 @@ export default {
 
   input {
     font-size: $fs-normal;
-    width: 20px;
-    text-align: center;
+    flex-grow: 1;
+    text-align: left;
     border: none;
     background-color: white;
-    cursor: default;
 
     &:focus {
       outline: none;
