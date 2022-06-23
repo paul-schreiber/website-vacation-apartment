@@ -7,7 +7,7 @@
           <p class="standard-text">
             {{ texts.intro }}
           </p>
-          <PrimaryButton caption="Buchen" route="#accommodation" />
+          <PrimaryNavButton caption="Buchen" route="#accommodation" />
         </div>
         <img class="intro-img" src="@/assets/img/photo-stack-2.png" />
       </div>

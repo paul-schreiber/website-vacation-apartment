@@ -1,107 +1,131 @@
 <template>
   <div class="detail-container">
-    <header>
-      <h2>Ferienwohnung {{ accom.name }}</h2>
-      <div class="tile-icon">
-        <img height="30" :src="iconPath" :alt="accom.icon" />
-      </div>
-    </header>
-    <div class="content">
-      <section class="content-section">
-        <Tabs :tabs="tabs">
-          <template v-slot:[tabs[0]]>
-            <ul>
-              <li v-if="accom.rooms.livingroom">
-                {{ accom.rooms.livingroom }}x Wohnzimmer
-              </li>
-              <li v-if="accom.rooms.bathroom">
-                {{ accom.rooms.bathroom }}x Bad
-              </li>
-              <li v-if="accom.rooms.bedroomOneBed">
-                {{ accom.rooms.bedroomOneBed }}x Schlafzimmer (1 Bett)
-              </li>
-              <li v-if="accom.rooms.bedroomTwoBed">
-                {{ accom.rooms.bedroomTwoBed }}x Schlafzimmer (2 Betten)
-              </li>
-              <li v-if="accom.rooms.kitchen">
-                {{ accom.rooms.kitchen }}x Küche
-              </li>
-            </ul>
-          </template>
-          <template v-slot:[tabs[1]]>
-            <IconList :items="accom.equipment" />
-          </template>
-          <template v-slot:[tabs[2]]>
-            <Galery :imageSources="sources" />
-          </template>
-        </Tabs>
-      </section>
-      <section class="content-section">
-        <h3>Reisedaten:</h3>
-        <form class="travel-info-form">
-          <div class="date-picker">
-            <span class="input-caption">Datum:</span>
-            <DatePicker v-model="dateRange" is-range>
-              <template v-slot="{ inputValue, togglePopover }">
-                <div class="date-input">
-                  <button @click="togglePopover()" class="icon-button">
-                    <fa-icon class="mr-s" icon="calendar" />
-                  </button>
-                  <input
-                    @click="togglePopover()"
-                    :value="`${inputValue.start} - ${inputValue.end}`"
-                    readonly
-                  />
-                </div> </template
-            ></DatePicker>
+    <div>
+      <header>
+        <h2>Ferienwohnung {{ accom.name }}</h2>
+        <div class="tile-icon">
+          <img height="30" :src="iconPath" :alt="accom.icon" />
+        </div>
+      </header>
+      <div class="content" v-if="bookingStatus === 'planning'">
+        <section class="content-section">
+          <Tabs :tabs="tabs">
+            <template v-slot:[tabs[0]]>
+              <ul>
+                <li v-if="accom.rooms.livingroom">
+                  {{ accom.rooms.livingroom }}x Wohnzimmer
+                </li>
+                <li v-if="accom.rooms.bathroom">
+                  {{ accom.rooms.bathroom }}x Bad
+                </li>
+                <li v-if="accom.rooms.bedroomOneBed">
+                  {{ accom.rooms.bedroomOneBed }}x Schlafzimmer (1 Bett)
+                </li>
+                <li v-if="accom.rooms.bedroomTwoBed">
+                  {{ accom.rooms.bedroomTwoBed }}x Schlafzimmer (2 Betten)
+                </li>
+                <li v-if="accom.rooms.kitchen">
+                  {{ accom.rooms.kitchen }}x Küche
+                </li>
+              </ul>
+            </template>
+            <template v-slot:[tabs[1]]>
+              <IconList :items="accom.equipment" />
+            </template>
+            <template v-slot:[tabs[2]]>
+              <Galery :imageSources="sources" />
+            </template>
+          </Tabs>
+        </section>
+        <section class="content-section">
+          <h3>Reisedaten:</h3>
+          <form class="travel-info-form">
+            <div class="date-picker">
+              <span class="input-caption">Datum:</span>
+              <DatePicker v-model="dateRange" is-range>
+                <template v-slot="{ inputValue, togglePopover }">
+                  <div class="date-input">
+                    <button @click="togglePopover()" class="icon-button">
+                      <fa-icon class="mr-s" icon="calendar" />
+                    </button>
+                    <input
+                      @click="togglePopover()"
+                      :value="`${inputValue.start} - ${inputValue.end}`"
+                      readonly
+                    />
+                  </div> </template
+              ></DatePicker>
+            </div>
+            <CountPicker
+              :value.sync="personCount"
+              min="1"
+              :max="maxBeds"
+              caption="Personen"
+              @updateCount="updateCount"
+            />
+          </form>
+        </section>
+        <section class="content-section">
+          <h3>Preis:</h3>
+          <div class="billing-line">
+            <span>
+              {{ getCosts.pricePerNight }} € x {{ this.overnightStays }}
+              <span v-if="this.overnightStays > 1">Nächte</span>
+              <span v-if="this.overnightStays <= 1">Nacht</span>
+            </span>
+            <span>{{ getCosts.priceAllNights }} €</span>
           </div>
-          <CountPicker
-            :value.sync="personCount"
-            min="1"
-            :max="maxBeds"
-            caption="Personen"
-            @updateCount="updateCount"
+          <div class="billing-line">
+            <span>Servicegebühr</span>
+            <span>{{ getCosts.cleaningFee }} €</span>
+          </div>
+          <div class="billing-divider"></div>
+          <div class="billing-line bold">
+            <span>Gesamt</span>
+            <span>{{ getCosts.finalPrice }} €</span>
+          </div>
+        </section>
+        <section class="content-section action-button">
+          <PrimaryActionButton
+            caption="Weiter"
+            :onClick="activateBookingStatus"
           />
-        </form>
-      </section>
-      <section class="content-section">
-        <h3>Preis:</h3>
-        <div class="billing-line">
-          <span>
-            {{ getCosts.pricePerNight }} € x {{ this.overnightStays }}
-            <span v-if="this.overnightStays > 1">Nächte</span>
-            <span v-if="this.overnightStays <= 1">Nacht</span>
-          </span>
-          <span>{{ getCosts.priceAllNights }} €</span>
-        </div>
-        <div class="billing-line">
-          <span>Servicegebühr</span>
-          <span>{{ getCosts.cleaningFee }} €</span>
-        </div>
-        <div class="billing-divider"></div>
-        <div class="billing-line bold">
-          <span>Gesamt</span>
-          <span>{{ getCosts.finalPrice }} €</span>
-        </div>
-      </section>
-      <section class="content-section action-button">
-      <PrimaryButton caption="Anfragen"/>
-      </section>
+        </section>
+      </div>
+      <div v-else-if="bookingStatus === 'booking'">
+        <input readonly />
+        <PrimaryActionButton
+          caption="Anfragen"
+          :onClick="activatePlanningStatus"
+          key="button"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import emailjs from "@emailjs/browser";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
+import smoothHeight from "vue-smooth-height";
 
 export default {
   components: {
     DatePicker,
   },
   props: ["accom"],
+  mixins: [smoothHeight],
+  mounted() {
+    this.$smoothElement({
+      el: ".detail-container",
+      hideOverflow: true,
+      transition: "height 0.5s ease-in-out .1s",
+    });
+  },
   data() {
     return {
       sources: ["photo-stack.png"],
+      bookingStatus: "planning",
       dateRange: {
         start: new Date(),
         end: new Date(new Date().setDate(new Date().getDate() + 1)),
@@ -132,7 +156,9 @@ export default {
     getDiscount() {
       const discount = this.accom.priceCatalogue.discounts.reduce(
         (prev, curr) => {
-          return prev.days < curr.days && curr.days <= this.overnightStays ? curr : prev;
+          return prev.days < curr.days && curr.days <= this.overnightStays
+            ? curr
+            : prev;
         },
         { days: 0, percentage: 0 }
       );
@@ -145,7 +171,9 @@ export default {
       const pricePerNight =
         priceCatalogue.basePrice +
         this.personCount * priceCatalogue.pricePerPerson;
-      let discountedPricePerNight = Math.round(pricePerNight * (100 - this.getDiscount)/100);
+      let discountedPricePerNight = Math.round(
+        (pricePerNight * (100 - this.getDiscount)) / 100
+      );
       const priceAllNights = discountedPricePerNight * this.overnightStays;
       let finalPrice = priceAllNights + this.accom.priceCatalogue.cleaningFee;
 
@@ -153,7 +181,7 @@ export default {
         pricePerNight: discountedPricePerNight,
         priceAllNights,
         cleaningFee: this.accom.priceCatalogue.cleaningFee,
-        finalPrice: finalPrice
+        finalPrice: finalPrice,
       };
     },
   },
@@ -163,6 +191,29 @@ export default {
     },
     isSummer() {
       return true;
+    },
+    activatePlanningStatus() {
+      this.bookingStatus = "planning";
+    },
+    activateBookingStatus() {
+      this.bookingStatus = "booking";
+    },
+    sendMail() {
+      emailjs
+        .sendForm(
+          "YOUR_SERVICE_ID",
+          "YOUR_TEMPLATE_ID",
+          this.$refs.form,
+          "YOUR_PUBLIC_KEY"
+        )
+        .then(
+          (result) => {
+            console.log("SUCCESS!", result.text);
+          },
+          (error) => {
+            console.log("FAILED...", error.text);
+          }
+        );
     },
   },
 };
@@ -181,6 +232,7 @@ h3 {
 }
 
 .detail-container {
+  overflow: hidden;
   header {
     display: flex;
     justify-content: space-between;
@@ -248,4 +300,5 @@ h3 {
     justify-content: end;
   }
 }
+
 </style>

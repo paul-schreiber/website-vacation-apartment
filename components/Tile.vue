@@ -23,7 +23,7 @@
         <div @click="getPrice(10, 1, 5)" class="tile-price">
           ab {{ cheapestPrice }}€/Nacht
         </div>
-        <PrimaryButton caption="Details" />
+        <PrimaryNavButton caption="Details" />
       </footer>
     </div>
     <Popover :isVisible="showDetails" :toggleMenu="toggleMenu" :accom="accom"/>
