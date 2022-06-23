@@ -48,4 +48,11 @@ export default {
   box-shadow: $soft-shadow;
   overflow: visible;
 }
+
+@media only screen and (max-width: 800px) {
+  .popover-content {
+    position: absolute;
+    bottom: 0;
+  }
+}
 </style>
