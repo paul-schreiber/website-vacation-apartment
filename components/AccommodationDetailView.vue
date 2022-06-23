@@ -15,14 +15,20 @@
                 <li v-if="accom.rooms.livingroom">
                   {{ accom.rooms.livingroom }}x Wohnzimmer
                 </li>
-                <li v-if="accom.rooms.bathroom">
-                  {{ accom.rooms.bathroom }}x Bad
-                </li>
                 <li v-if="accom.rooms.bedroomOneBed">
                   {{ accom.rooms.bedroomOneBed }}x Schlafzimmer (1 Bett)
                 </li>
                 <li v-if="accom.rooms.bedroomTwoBed">
                   {{ accom.rooms.bedroomTwoBed }}x Schlafzimmer (2 Betten)
+                </li>
+                <li v-if="accom.rooms.bedroomThreeBed">
+                  {{ accom.rooms.bedroomThreeBed }}x Schlafzimmer (3 Betten)
+                </li>
+                <li v-if="accom.rooms.bedroomFourBed">
+                  {{ accom.rooms.bedroomFourBed }}x Schlafzimmer (4 Betten)
+                </li>
+                <li v-if="accom.rooms.bathroom">
+                  {{ accom.rooms.bathroom }}x Bad
                 </li>
                 <li v-if="accom.rooms.kitchen">
                   {{ accom.rooms.kitchen }}x Küche
@@ -144,7 +150,7 @@ export default {
     },
     maxBeds() {
       return (
-        this.accom.rooms.bedroomOneBed + this.accom.rooms.bedroomTwoBed * 2
+        this.accom.rooms.bedroomOneBed + this.accom.rooms.bedroomTwoBed * 2 + this.accom.rooms.bedroomThreeBed * 3 + this.accom.rooms.bedroomFourBed * 4
       );
     },
     tabs() {

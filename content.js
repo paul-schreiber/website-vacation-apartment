@@ -18,6 +18,8 @@ export default {
                 bathroom: 1,
                 bedroomOneBed: 0,
                 bedroomTwoBed: 1,
+                bedroomThreeBed: 0,
+                bedroomFourBed: 0,
                 kitchen: 1,
             },
             equipment:
@@ -68,6 +70,8 @@ export default {
                 bathroom: 2,
                 bedroomOneBed: 1,
                 bedroomTwoBed: 2,
+                bedroomThreeBed: 0,
+                bedroomFourBed: 0,
                 kitchen: 1,
             },
             equipment:
@@ -109,7 +113,10 @@ export default {
     ],
     texts: {
         greeting: "Schön dich zu sehen!",
-        intro: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no ea takimata sanctus est. Lorem ipsum dolor sit amet.",
+        intro: {
+            partOne: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no ea takimata sanctus est. Lorem ipsum dolor sit amet.",
+            partTwo: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no ea takimata sanctus est. Lorem ipsum dolor sit amet."
+        },
         location: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
     }
 }

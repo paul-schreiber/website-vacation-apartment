@@ -11,10 +11,10 @@
         <div class="tile-details">
           <ul>
             <li v-if="accom.rooms.livingroom">{{ accom.rooms.livingroom }}x Wohnzimmer</li>
-            <li v-if="accom.rooms.bathroom">{{ accom.rooms.bathroom }}x Bad</li>
-            <li v-if="accom.rooms.bedroomOneBed || accom.rooms.bedroomTwoBed">
-              {{ accom.rooms.bedroomOneBed + accom.rooms.bedroomTwoBed }}x Schlafzimmer
+            <li v-if="accom.rooms.bedroomOneBed || accom.rooms.bedroomTwoBed || accom.rooms.bedroomThreeBed || accom.rooms.bedroomFourBed">
+              {{ accom.rooms.bedroomOneBed + accom.rooms.bedroomTwoBed + accom.rooms.bedroomThreeBed + accom.rooms.bedroomFourBed }}x Schlafzimmer
             </li>
+            <li v-if="accom.rooms.bathroom">{{ accom.rooms.bathroom }}x Bad</li>
             <li v-if="accom.rooms.kitchen">{{ accom.rooms.kitchen }}x Küche</li>
           </ul>
         </div>
