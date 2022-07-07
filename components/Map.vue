@@ -1,9 +1,27 @@
 <template>
-  <div id="map"></div>
+  <div>
+    <a v-if="isMobileAppleDevice()" :href="appleMapsLink" target="_blank" rel="noopener noreferrer">
+      <div id="map"></div>
+    </a>
+    <a v-else :href="googleMapsLink" target="_blank" rel="noopener noreferrer">
+      <div id="map"></div>
+    </a>
+  </div>
 </template>
 
 <script>
 export default {
+  props: ['appleMapsLink', 'googleMapsLink'],
+  methods: {
+    isMobileAppleDevice() {
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+
   mounted() {
     let mapKitScript = document.createElement("script");
     mapKitScript.setAttribute(

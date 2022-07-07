@@ -45,7 +45,8 @@
         <p class="standard-text">
           {{ texts.location }}
         </p>
-        <Map />
+        <Map :appleMapsLink="mapLinks.appleMaps" :googleMapsLink="mapLinks.googleMaps"
+/>
       </div>
     </div>
   </div>
@@ -53,7 +54,7 @@
 
 <script>
 export default {
-  props: ["accommodations", "texts"],
+  props: ["accommodations", "texts", 'mapLinks'],
   data() {
     return {
       multipleAccommodations: this.accommodations.length - 1,
