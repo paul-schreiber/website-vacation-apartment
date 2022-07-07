@@ -1,36 +1,36 @@
 export default {
-    name: "Pension Mustermann",
+    name: "Ferienhof Am Jakobsweg",
     logo: "logo-mustermann.png",
     address: {
-        street: "Musterstraße",
-        streetNumber: 1,
-        zipCode: "0815",
-        city: "Musterhausen"
+        street: "Elbstraße",
+        streetNumber: 13,
+        zipCode: "01619",
+        city: "Zschepa"
     },
-    telephone: "080008151337",
-    mail: "pension-mustermann@mustermann.com",
+    telephone: "035264/97187",
+    mail: "ferienhof.fischer.zschepa@gmail.com",
     accommodations: [
         {
-            name: "Hofidylle",
+            name: "Ferienhof",
             icon: "bed",
             rooms: {
-                livingroom: 1,
-                bathroom: 1,
+                livingroom: 0,
+                bathroom: 2,
                 bedroomOneBed: 0,
-                bedroomTwoBed: 1,
+                bedroomTwoBed: 0,
                 bedroomThreeBed: 0,
-                bedroomFourBed: 0,
+                bedroomFourBed: 1,
                 kitchen: 1,
             },
             equipment:
                 [
                     {
-                        name: 'Wifi',
-                        icon: 'wifi'
-                    },
-                    {
                         name: 'Fernseher',
                         icon: 'tv'
+                    },
+                    {
+                        name: 'Küchenausstattung',
+                        icon: 'kitchen-set'
                     },
                     {
                         name: 'Waschmaschine',
@@ -39,16 +39,20 @@ export default {
                     {
                         name: 'Gartennutzung',
                         icon: 'seedling'
+                    },
+                    {
+                        name: 'Frühstück möglich',
+                        icon: 'apple-whole'
                     }
                 ],
             priceCatalogue: {
                 summer: {
-                    basePrice: 20,
-                    pricePerPerson: 15,
+                    basePrice: 24,
+                    pricePerPerson: 18,
                 },
                 winter: {
                     basePrice: 30,
-                    pricePerPerson: 15,
+                    pricePerPerson: 20,
                 },
                 cleaningFee: 5,
                 discounts: [
@@ -62,61 +66,14 @@ export default {
                     }]
             }
         },
-        {
-            name: "Urlaubsparadies",
-            icon: "armchair",
-            rooms: {
-                livingroom: 2,
-                bathroom: 2,
-                bedroomOneBed: 1,
-                bedroomTwoBed: 2,
-                bedroomThreeBed: 0,
-                bedroomFourBed: 0,
-                kitchen: 1,
-            },
-            equipment:
-                [
-                    {
-                        name: 'Wifi',
-                        icon: 'wifi'
-                    },
-                    {
-                        name: 'Fernseher',
-                        icon: 'tv'
-                    },
-                    {
-                        name: 'Gartennutzung',
-                        icon: 'seedling'
-                    }
-                ],
-            priceCatalogue: {
-                summer: {
-                    basePrice: 45,
-                    pricePerPerson: 20,
-                },
-                winter: {
-                    basePrice: 60,
-                    pricePerPerson: 20,
-                },
-                cleaningFee: 10,
-                discounts: [
-                    {
-                        days: 5,
-                        percentage: 5
-                    },
-                    {
-                        days: 14,
-                        percentage: 8
-                    }]
-            }
-        }
     ],
     texts: {
         greeting: "Schön dich zu sehen!",
         intro: {
-            partOne: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no ea takimata sanctus est. Lorem ipsum dolor sit amet.",
-            partTwo: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+            partOne: "Unser hübscher Dreiseitenhof liegt direkt am rechten Flussufer, nur ein kurzes Stück verlaufen hier der Elberadweg und der Jakobsweg gemeinsam. Auf der Bank vor unserem Hof rasten gern Pilger und Radler. Während der Blick auf den Elbwiesen und dem Fluss ruht, gibt es so manches interessante Gespräch.",
+            partTwo: "Die Unterkunft befindet sich im Erdgeschoss und ist an heißen Tagen angenehm kühl. Sie hat einen eigenen Eingang und eine Sitzgruppe im Grünen. Bei schönem Wetter kann man das reichhaltige Frühstück gern draußen genießen.",
+
         },
-        location: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+        location: "Der Ferienhof befindet sich im kleinen Dorf Zschepa der Gemeinde Zeithain. Der Elberadweg verläuft direkt durchs Dorf und führt direkt an der Unterkunft vorbei."
     }
 }
