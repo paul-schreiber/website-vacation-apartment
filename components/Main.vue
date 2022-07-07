@@ -12,7 +12,7 @@
           </p>
           <PrimaryNavButton caption="Buchen" route="#accommodation" />
         </div>
-        <img class="intro-img" src="@/assets/img/photo-stack-2.png" />
+        <img class="intro-img" src="@/assets/img/coverImage.jpg" />
       </div>
     </div>
     <svg
@@ -58,7 +58,7 @@ export default {
     return {
       multipleAccommodations: this.accommodations.length - 1,
     };
-  }
+  },
 };
 </script>
 
@@ -136,7 +136,7 @@ svg {
       max-width: 40%;
     }
 
-     .tile-container {
+    .tile-container {
       align-items: flex-start;
       flex-direction: row;
     }
@@ -149,6 +149,7 @@ svg {
         //align-items: center;
 
         .intro-img {
+          border-radius: 20px;
           align-self: center;
           margin-top: 80px;
           margin-bottom: 0;
@@ -162,9 +163,6 @@ svg {
   }
 }
 @media only screen and (min-width: 800px) {
-  .main {
-   
-  }
   .section {
     padding: $margin-huge $margin-huge;
   }
