@@ -39,7 +39,7 @@
       <div class="sub-footer-content">
         <div>© {{ name }}</div>
         <NuxtLink to="/privacy">Datenschutz</NuxtLink>
-        <NuxtLink to="/imprint">Impressum</NuxtLink>
+        <NuxtLink to="/legal">Impressum</NuxtLink>
         <div>
           Design by
           <a class="contact-link" href="https://github.com/paul-schreiber"
