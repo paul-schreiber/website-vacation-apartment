@@ -145,7 +145,7 @@ export default {
       if (!this.accom.icon) {
         return;
       }
-      return require(`@/assets/img/icons/${this.accom.icon}.png`);
+      return require(`@/assets/img/${this.accom.icon}.png`);
     },
     maxBeds() {
       return (

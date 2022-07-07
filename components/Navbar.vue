@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="navbar-content">
       <div class="logo">
-        <a href="#"> <img src="@/assets/img/logo/logo.png" /></a>
+        <a href="#"> <img src="@/assets/img/logo.png" /></a>
       </div>
       <ul class="menu" @click="toggleMenu" :class="[showMenu ? 'overlay' : '']">
         <li><a href="#accommodation">Unterkunft</a></li>

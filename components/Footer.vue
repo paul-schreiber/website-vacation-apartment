@@ -15,7 +15,7 @@
     <div class="footer-content-wrapper">
       <div class="footer-content">
         <div class="logo" id="contact">
-          <a href="#"> <img src="@/assets/img/logo/logo-white.png" /></a>
+          <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
         </div>
         <address class="contact-data">
           <div>{{ name }}</div>
@@ -38,8 +38,8 @@
     <div class="sub-footer-content-wrapper">
       <div class="sub-footer-content">
         <div>© {{ name }}</div>
-        <NuxtLink to="/privacy">Datenschutz</NuxtLink>
-        <NuxtLink to="/legal">Impressum</NuxtLink>
+        <div>Datenschutz</div>
+        <div>Impressum</div>
         <div>
           Design by
           <a class="contact-link" href="https://github.com/paul-schreiber"
@@ -124,15 +124,10 @@ footer {
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: $fw-light;
-
-  a {
-    text-decoration: none;
-    color: $light-background-color;
-  }
 }
 
 a.contact-link {
-  color: $light-background-color;
+  color: white;
 }
 
 .mt-b {
