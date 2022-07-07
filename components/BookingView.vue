@@ -141,7 +141,7 @@ export default {
 .frc-captcha {
   justify-self: right;
   background-color: transparent;
-  opacity: 75%;
+  opacity: 0.75;
   border: none;
   width: fit-content;
   padding-bottom: 0px;
