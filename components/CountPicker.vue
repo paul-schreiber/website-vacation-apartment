@@ -62,6 +62,7 @@ export default {
     border: none;
     background-color: white;
     cursor: default;
+    padding: 0px;
 
     &:focus {
       outline: none;
