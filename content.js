@@ -9,6 +9,10 @@ export default {
     },
     telephone: "035264/97187",
     mail: "ferienhof.fischer.zschepa@gmail.com",
+    mapLinks: {
+        googleMaps: "https://goo.gl/maps/ZHsN85YFRqfQoiHaA",
+        appleMaps: "https://maps.apple.com/?address=Elbstra%C3%9Fe%2013,%20Zschepa,%2001619%20Zeithain,%20Deutschland&auid=18320176372384663928&ll=51.349629,13.263921&lsp=9902&q=Pension%20und%20Ferienwohnung%20B.%20Fischer&_ext=CjMKBQgEEIEBCgQIBRADCgUIBhCxAQoECAoQAAoECFIQBAoECFUQAAoECFkQBAoFCKQBEAESJiluAVdZLKxJQDHQu2tSb4MqQDns1ny1Uq1JQEHW5TWIzIoqQFAE",
+    },
     accommodations: [
         {
             name: "Ferienhof",
