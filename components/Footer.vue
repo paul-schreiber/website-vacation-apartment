@@ -15,7 +15,7 @@
     <div class="footer-content-wrapper">
       <div class="footer-content">
         <div class="logo" id="contact">
-          <a href="#"> <img src="@/assets/img/logo-white.png" /></a>
+          <a href="#"> <img src="@/assets/img/logo/logo-white.png" /></a>
         </div>
         <address class="contact-data">
           <div>{{ name }}</div>
