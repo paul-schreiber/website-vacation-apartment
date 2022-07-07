@@ -74,6 +74,6 @@ export default {
             partTwo: "Die Unterkunft befindet sich im Erdgeschoss und ist an heißen Tagen angenehm kühl. Sie hat einen eigenen Eingang und eine Sitzgruppe im Grünen. Bei schönem Wetter kann man das reichhaltige Frühstück gern draußen genießen.",
 
         },
-        location: "Der Ferienhof befindet sich im kleinen Dorf Zschepa der Gemeinde Zeithain. Der Elberadweg verläuft direkt durchs Dorf und führt direkt an der Unterkunft vorbei."
+        location: "Der Ferienhof befindet sich im kleinen Dorf Zschepa der Gemeinde Zeithain. Der Elberadweg verläuft durchs Dorf und führt direkt an der Unterkunft vorbei."
     }
 }
