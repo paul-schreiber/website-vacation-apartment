@@ -142,7 +142,6 @@ export default {
   .menu.overlay {
     display: block;
     margin: 0;
-    padding-top: 100px;
     background: rgba(0, 0, 0, 0.85);
     z-index: 3;
     color: #fff;
@@ -152,7 +151,9 @@ export default {
     top: 0;
     height: 0;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 100px;
+    padding-left: 0px;
+    font-size: $fs-medium;
     transition: all 0.3s ease-in-out;
 
     a {

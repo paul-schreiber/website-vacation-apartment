@@ -302,6 +302,7 @@ h3 {
 
   .travel-info-form {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .date-picker {
