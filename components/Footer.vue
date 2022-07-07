@@ -38,8 +38,8 @@
     <div class="sub-footer-content-wrapper">
       <div class="sub-footer-content">
         <div>© {{ name }}</div>
-        <div>Datenschutz</div>
-        <div>Impressum</div>
+        <NuxtLink to="/privacy">Datenschutz</NuxtLink>
+        <NuxtLink to="/imprint">Impressum</NuxtLink>
         <div>
           Design by
           <a class="contact-link" href="https://github.com/paul-schreiber"
@@ -124,10 +124,15 @@ footer {
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: $fw-light;
+
+  a {
+    text-decoration: none;
+    color: $light-background-color;
+  }
 }
 
 a.contact-link {
-  color: white;
+  color: $light-background-color;
 }
 
 .mt-b {
