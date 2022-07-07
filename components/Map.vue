@@ -1,17 +1,27 @@
 <template>
   <div>
-    <a v-if="isMobileAppleDevice()" :href="appleMapsLink" target="_blank" rel="noopener noreferrer">
-      <div id="map"></div>
+    <a
+      v-if="isMobileAppleDevice()"
+      :href="appleMapsLink"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div id="map"><img :src="mapImageURL" /></div>
     </a>
     <a v-else :href="googleMapsLink" target="_blank" rel="noopener noreferrer">
-      <div id="map"></div>
+      <div id="map"><img :src="mapImageURL" /></div>
     </a>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['appleMapsLink', 'googleMapsLink'],
+  props: ["appleMapsLink", "googleMapsLink"],
+  data() {
+    return {
+      mapImageURL: process.env.mapImageURL,
+    };
+  },
   methods: {
     isMobileAppleDevice() {
       if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -20,15 +30,6 @@ export default {
         return false;
       }
     },
-  },
-
-  mounted() {
-    let mapKitScript = document.createElement("script");
-    mapKitScript.setAttribute(
-      "src",
-      "https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"
-    );
-    document.head.appendChild(mapKitScript);
   },
 };
 </script>
@@ -39,7 +40,14 @@ export default {
   height: 300px;
   margin: $margin-large auto;
   background-color: lightgray;
-  border-radius: 20px;
   box-shadow: $soft-shadow;
+  border-radius: 20px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 </style>
