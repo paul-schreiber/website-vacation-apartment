@@ -42,3 +42,6 @@ html {
   box-sizing: inherit;
 }
 </style>
+=======
+    <div>Datenschutz</div>
+</template>
