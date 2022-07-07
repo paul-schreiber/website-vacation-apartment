@@ -45,7 +45,8 @@
         <p class="standard-text">
           {{ texts.location }}
         </p>
-        <Map />
+        <Map :appleMapsLink="mapLinks.appleMaps" :googleMapsLink="mapLinks.googleMaps"
+/>
       </div>
     </div>
   </div>
@@ -53,12 +54,12 @@
 
 <script>
 export default {
-  props: ["accommodations", "texts"],
+  props: ["accommodations", "texts", 'mapLinks'],
   data() {
     return {
       multipleAccommodations: this.accommodations.length - 1,
     };
-  }
+  },
 };
 </script>
 
@@ -136,7 +137,7 @@ svg {
       max-width: 40%;
     }
 
-     .tile-container {
+    .tile-container {
       align-items: flex-start;
       flex-direction: row;
     }
@@ -149,6 +150,7 @@ svg {
         //align-items: center;
 
         .intro-img {
+          border-radius: 20px;
           align-self: center;
           margin-top: 80px;
           margin-bottom: 0;
@@ -162,9 +164,6 @@ svg {
   }
 }
 @media only screen and (min-width: 800px) {
-  .main {
-   
-  }
   .section {
     padding: $margin-huge $margin-huge;
   }

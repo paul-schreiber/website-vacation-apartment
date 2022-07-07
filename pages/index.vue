@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <Main :accommodations="content.accommodations" :texts="content.texts" />
+    <Main :accommodations="content.accommodations" :texts="content.texts" :mapLinks="content.mapLinks"/>
     <Footer
       :name="content.name"
       :address="content.address"
