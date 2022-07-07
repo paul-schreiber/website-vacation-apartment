@@ -67,7 +67,6 @@
 
 <script>
 import VueFriendlyCaptcha from "@somushq/vue-friendly-captcha";
-import apiKeys from "@/api-keys";
 
 export default {
   components: {
@@ -78,11 +77,12 @@ export default {
     sendMail: Function,
   },
   data() {
+    console.log(process.env)
     return {
       userName: "",
       email: "",
       additionalNotes: "",
-      siteKey: apiKeys.friendlyCaptcha.siteKey,
+      siteKey: process.env.friendlyCaptchaKey,
       isHuman: false,
       mailError: false,
     };
