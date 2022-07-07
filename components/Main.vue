@@ -115,6 +115,7 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -133,6 +134,11 @@ svg {
   .main {
     .intro-container {
       max-width: 40%;
+    }
+
+     .tile-container {
+      align-items: flex-start;
+      flex-direction: row;
     }
 
     .welcome-section {
@@ -157,10 +163,7 @@ svg {
 }
 @media only screen and (min-width: 800px) {
   .main {
-    .tile-container {
-      align-items: flex-start;
-      flex-direction: row;
-    }
+   
   }
   .section {
     padding: $margin-huge $margin-huge;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tile-wrapper">
     <div class="tile" @click="toggleMenu">
       <header>
         <div class="tile-title">FW {{ accom.name }}</div>
@@ -145,8 +145,8 @@ export default {
   }
 }
 
-@media only screen and (min-width: 800px) {
-  .tile {
+@media only screen and (min-width: 992px) {
+  .tile-wrapper:not(:last-child) {
     margin-right: $margin-large;
   }
 }

@@ -113,7 +113,6 @@
 import emailjs from "@emailjs/browser";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import smoothHeight from "vue-smooth-height";
-import apiKeys from "@/api-keys";
 
 export default {
   components: {
@@ -234,10 +233,10 @@ export default {
 
       emailjs
         .send(
-          apiKeys.emailJS.serviceId,
-          apiKeys.emailJS.templateId,
+          process.env.emailJsServiceId,
+          process.env.emailJsTemplateId,
           templateParams,
-          apiKeys.emailJS.publicKey
+          process.env.emailJsPublicKey
         )
         .then(
           (result) => {

@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -20,6 +23,13 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+
+  env: {
+    friendlyCaptchaKey: process.env.FRIENDLY_CAPTCHA_SITE_KEY,
+    emailJsPublicKey: process.env.EMAIL_JS_PUBLIC_KEY,
+    emailJsServiceId: process.env.EMAIL_JS_SERVICE_ID,
+    emailJsTemplateId: process.env.EMAIL_JS_TEMPLATE_ID
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -51,13 +61,21 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv'
   ],
-  
+
   styleResources: {
     scss: ['./assets/scss/*.scss']
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+    extend: function (config, { isDev, isClient }) {
+
+      config.node = {
+
+        fs: "empty"
+      };
+    }
+  },
 }
