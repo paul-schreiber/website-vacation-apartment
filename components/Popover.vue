@@ -42,7 +42,7 @@ export default {
   z-index: 4;
   background-color: $light-background-color;
   padding: $margin-big;
-  max-width: 600px;
+  max-width: 100%;
   width: 600px;
   border-radius: 20px;
   box-shadow: $soft-shadow;
