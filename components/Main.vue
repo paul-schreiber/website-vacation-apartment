@@ -67,6 +67,7 @@ export default {
 svg {
   width: 100%;
   z-index: -1;
+  margin-top: -1px;
 }
 .soft-shadow {
   -webkit-filter: drop-shadow(0px 5px 40px rgba(0, 0, 0, 0.12));

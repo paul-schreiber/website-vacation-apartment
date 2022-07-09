@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar :isHome="true"/>
     <Main :accommodations="content.accommodations" :texts="content.texts" :mapLinks="content.mapLinks"/>
     <Footer
       :name="content.name"
@@ -25,6 +25,7 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
+  background-color: $light-background-color;
 }
 
 html {
