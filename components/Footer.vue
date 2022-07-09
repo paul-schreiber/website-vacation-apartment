@@ -68,6 +68,7 @@ export default {
 <style lang="scss" scoped>
 svg {
   width: 100%;
+  margin-bottom: -1px;
 }
 
 .soft-shadow {
