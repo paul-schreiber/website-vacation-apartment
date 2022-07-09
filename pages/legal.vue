@@ -66,7 +66,6 @@
         </section>
       </div>
     </div>
-
     <Footer
       :name="content.name"
       :address="content.address"
