@@ -15,7 +15,7 @@
     <div class="footer-content-wrapper">
       <div class="footer-content">
         <div class="logo" id="contact">
-          <a href="#"> <img src="@/assets/img/logo/logo-white.png" /></a>
+          <NuxtLink to="/"> <img src="@/assets/img/logo/logo-white.png" /></NuxtLink>
         </div>
         <address class="contact-data">
           <div>{{ name }}</div>
@@ -68,6 +68,7 @@ export default {
 <style lang="scss" scoped>
 svg {
   width: 100%;
+  margin-bottom: -1px;
 }
 
 .soft-shadow {

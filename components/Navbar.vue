@@ -2,14 +2,20 @@
   <nav class="navbar">
     <div class="navbar-content">
       <div class="logo">
-        <a href="#"> <img src="@/assets/img/logo/logo.png" /></a>
+        <NuxtLink to="/"><img src="@/assets/img/logo/logo.png" /></NuxtLink>
       </div>
-      <ul class="menu" @click="toggleMenu" :class="[showMenu ? 'overlay' : '']">
+      <ul
+        class="menu"
+        @click="toggleMenu"
+        :class="[showMenu ? 'overlay' : '']"
+        v-if="isHome"
+      >
         <li><a href="#accommodation">Unterkunft</a></li>
         <li><a href="#route">Anfahrt</a></li>
         <li><a href="#contact">Kontakt</a></li>
       </ul>
       <div
+        v-if="isHome"
         class="burger-menu"
         @click="toggleMenu"
         :class="[showMenu ? 'close' : '']"
@@ -22,6 +28,7 @@
 
 <script>
 export default {
+  props: ["isHome"],
   data() {
     return {
       showMenu: false,
@@ -153,13 +160,12 @@ export default {
     text-align: center;
     padding-top: 100px;
     padding-left: 0px;
-    font-size: $fs-medium;
     transition: all 0.3s ease-in-out;
 
     a {
       color: #fff;
       display: block;
-      font-size: $fs-medium;
+      font-size: $fs-large;
       margin-bottom: 30px;
       text-decoration: none;
     }
