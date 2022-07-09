@@ -125,6 +125,11 @@ footer {
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: $fw-light;
+
+  a {
+    text-decoration: none;
+    color: $light-background-color;
+  }
 }
 
 a.contact-link {
