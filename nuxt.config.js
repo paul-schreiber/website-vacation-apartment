@@ -30,7 +30,7 @@ export default {
     emailJsPublicKey: process.env.EMAIL_JS_PUBLIC_KEY,
     emailJsServiceId: process.env.EMAIL_JS_SERVICE_ID,
     emailJsTemplateId: process.env.EMAIL_JS_TEMPLATE_ID,
-    mapImageURL: process.env.APPLE_MAPS_SNAPSHOT_URL,
+    mapImageURL: process.env.APPLE_MAPS_SNAPSHOT_URL
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

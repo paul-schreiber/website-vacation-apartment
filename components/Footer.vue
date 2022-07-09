@@ -9,7 +9,7 @@
       <path
         d="M 0,0 S 112,17, 378,17, 748,0, 1066,0 s 371,17, 584,17 S 1920,0, 1920,0 V100 H0Z"
         transform="translate(0 100)"
-        fill="#1ebd92"
+        fill="#FF6F61"
       />
     </svg>
     <div class="footer-content-wrapper">
@@ -38,8 +38,8 @@
     <div class="sub-footer-content-wrapper">
       <div class="sub-footer-content">
         <div>© {{ name }}</div>
-        <NuxtLink to="/privacy">Datenschutz</NuxtLink>
-        <NuxtLink to="/legal">Impressum</NuxtLink>
+        <div>Datenschutz</div>
+        <div>Impressum</div>
         <div>
           Design by
           <a class="contact-link" href="https://github.com/paul-schreiber"
@@ -125,15 +125,10 @@ footer {
   color: $light-background-color;
   font-size: $fs-small;
   font-weight: $fw-light;
-
-  a {
-    text-decoration: none;
-    color: $light-background-color;
-  }
 }
 
 a.contact-link {
-  color: $light-background-color;
+  color: white;
 }
 
 .mt-b {
