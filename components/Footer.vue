@@ -89,7 +89,7 @@ footer {
 }
 
 .footer-content {
-  padding: $margin-medium $margin-big;
+  padding: $margin-big;
   max-width: $max-width;
   margin: auto;
   margin-top: -2px;

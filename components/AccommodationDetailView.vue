@@ -322,12 +322,17 @@ h3 {
         box-shadow: inset 0 0 0 3px $primary-color-transparent;
       }
 
+      input {
+        width: 200px;
+      }
+
       input,
       .icon-button {
         margin: 0;
         font-size: $fs-normal;
         border: none;
         background-color: white;
+        color: $primary-font-color;
         cursor: pointer;
 
         &:focus {
