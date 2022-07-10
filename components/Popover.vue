@@ -53,6 +53,7 @@ export default {
   .popover-content {
     position: absolute;
     bottom: 0;
+    border-radius: 20px 20px 0px 0px;
   }
 }
 </style>

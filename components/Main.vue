@@ -83,6 +83,7 @@ svg {
 
   h1 {
     font-size: $fs-huge;
+    margin: $margin-small 0;
   }
 
   h2 {
@@ -122,8 +123,8 @@ svg {
 }
 
 .section {
-  padding: $margin-medium $margin-big;
-  min-height: 530px;
+  padding: $margin-big;
+  min-height: 450px;
   max-width: $max-width;
   margin: auto;
 }
