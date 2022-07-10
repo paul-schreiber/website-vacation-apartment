@@ -24,7 +24,7 @@ export default {
 .galery-container {
   display: flex;
   width: 350px;
-  height: 70px;
+  height: 75px;
   overflow-y: scroll;
   .image-container {
     width: 65px;

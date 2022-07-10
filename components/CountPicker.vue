@@ -61,6 +61,7 @@ export default {
     text-align: center;
     border: none;
     background-color: white;
+    color: $primary-font-color;
     cursor: default;
     padding: 0px;
 
