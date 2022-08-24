@@ -102,7 +102,6 @@ export default {
 <style lang="scss" scoped>
 body {
   background-color: $light-background-color;
-}
 
 h1 {
   font-size: $fs-huge;

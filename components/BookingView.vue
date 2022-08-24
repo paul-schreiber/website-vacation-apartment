@@ -77,7 +77,6 @@ export default {
     sendMail: Function,
   },
   data() {
-    console.log(process.env)
     return {
       userName: "",
       email: "",
