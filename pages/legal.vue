@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar :isHome="false"/>
+    <Navbar :isHome="false" />
     <div class="wrapper">
       <h2>Impressum</h2>
       <div>
@@ -66,12 +66,7 @@
         </section>
       </div>
     </div>
-    <Footer
-      :name="content.name"
-      :address="content.address"
-      :telephone="content.telephone"
-      :mail="content.mail"
-    />
+    <Footer :name="content.name" :address="content.address" :telephone="content.telephone" :mail="content.mail" />
   </div>
 </template>
 
@@ -84,27 +79,24 @@ export default {
     };
   },
   head() {
-      return {
-        title: 'Impressum',
-        meta: [
-          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-          {
-            hid: 'description',
-            name: 'description',
-            content: `Impressum von ${content.name}`
-          }
-        ]
-      }
+    return {
+      title: 'Impressum',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Impressum von ${content.name}`
+        }
+      ]
     }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 body {
   background-color: $light-background-color;
-
-h1 {
-  font-size: $fs-huge;
 }
 
 h2 {
