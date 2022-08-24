@@ -39,7 +39,8 @@
               <IconList :items="accom.equipment" />
             </template>
             <template v-slot:[tabs[2]]>
-              <Galery folderPath='assets/img/galery/' fileNamePattern='galery-' fileEnding='jpg' :imageCount="imageCount" />
+              <Galery folderPath='assets/img/galery/' fileNamePattern='galery-' fileEnding='jpg'
+                :imageCount="imageCount" />
             </template>
           </Tabs>
         </section>
@@ -54,21 +55,13 @@
                     <button @click="togglePopover()" class="icon-button">
                       <fa-icon class="mr-s" icon="calendar" />
                     </button>
-                    <input
-                      @click="togglePopover()"
-                      :value="`${inputValue.start} - ${inputValue.end}`"
-                      readonly
-                    />
-                  </div> </template
-              ></DatePicker>
+                    <input @click="togglePopover()" :value="`${inputValue.start} - ${inputValue.end}`" readonly />
+                  </div>
+                </template>
+              </DatePicker>
             </div>
-            <CountPicker
-              :value.sync="personCount"
-              min="0"
-              :max="maxBeds"
-              caption="Personen"
-              @updateCount="updateCount"
-            />
+            <CountPicker :value.sync="personCount" min="0" :max="maxBeds" caption="Personen"
+              @updateCount="updateCount" />
           </form>
         </section>
         <section class="content-section" v-if="personCount > 0">
@@ -96,14 +89,12 @@
         </section>
       </div>
       <div v-else-if="bookingStatus === 'booking'">
-        <BookingView
-          :navToPlanning="activatePlanningStatus"
-          :sendMail="sendMail"
-        />
+        <BookingView :navToPlanning="activatePlanningStatus" :sendMail="sendMail" />
       </div>
       <div v-else-if="bookingStatus === 'loading'"></div>
       <div v-else-if="bookingStatus === 'sent'">
-        The message was sent! <fa-icon class="mr-s" icon="paper-plane" />
+        The message was sent!
+        <fa-icon class="mr-s" icon="paper-plane" />
       </div>
     </div>
   </div>
@@ -158,6 +149,7 @@ export default {
     overnightStays() {
       let end = Date.parse(this.dateRange.end);
       let start = Date.parse(this.dateRange.start);
+      //Calculate days - divide seconds
       return (end - start) / 86400000;
     },
     getDiscount() {
@@ -265,6 +257,7 @@ h3 {
 
 .detail-container {
   overflow: hidden;
+
   header {
     display: flex;
     justify-content: space-between;
@@ -277,6 +270,7 @@ h3 {
 
     ul {
       padding: 0px;
+
       li {
         list-style: none;
         font-weight: $fw-light;

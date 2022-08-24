@@ -44,7 +44,7 @@ export default {
 
   .icon-button {
     margin: 0;
-    font-size: $fs-tiny;
+    font-size: $fs-normal;
     border: none;
     background-color: white;
     cursor: pointer;
