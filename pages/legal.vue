@@ -104,10 +104,6 @@ body {
   background-color: $light-background-color;
 }
 
-h1 {
-  font-size: $fs-huge;
-}
-
 h2 {
   font-size: $fs-large;
 }
