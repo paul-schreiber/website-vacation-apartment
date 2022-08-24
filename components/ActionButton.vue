@@ -1,7 +1,7 @@
 <template>
   <button
     @click="onClick"
-    :class="[type, disabled ? 'disabled' : '']"
+    :class="type"
     :disabled="disabled"
   >
     {{ caption }}
@@ -53,7 +53,7 @@ button {
     color: $primary-color;
   }
 
-  &.disabled {
+  &:disabled {
     border: 2px solid #b8b8b8;
     background-color: #e0e0e0;
     color: #9c9c9c;
