@@ -7,7 +7,7 @@ export default {
         zipCode: "01619",
         city: "Zschepa"
     },
-    telephone: "035264/97187",
+    telephone: "01729682095",
     mail: "ferienhof.fischer.zschepa@gmail.com",
     mapLinks: {
         googleMaps: "https://goo.gl/maps/ZHsN85YFRqfQoiHaA",
