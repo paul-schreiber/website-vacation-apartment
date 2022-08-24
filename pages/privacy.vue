@@ -120,10 +120,6 @@ export default {
 
 <style lang="scss" scoped>
 
-h1 {
-  font-size: $fs-huge;
-}
-
 h2 {
   font-size: $fs-large;
 }
