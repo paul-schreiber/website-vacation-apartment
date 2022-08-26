@@ -49,6 +49,7 @@ html {
   box-sizing: border-box; /* Opera/IE 8+ */
   color: $primary-font-color;
   scroll-behavior: smooth;
+  touch-action: manipulation;
 }
 *,
 *:before,
