@@ -39,7 +39,7 @@
               <IconList :items="accom.equipment" />
             </template>
             <template v-slot:[tabs[2]]>
-              <Galery folderPath='assets/img/galery/' fileNamePattern='galery-' fileEnding='jpg' :imageCount="imageCount" />
+              <Galery folderPath='assets/img/galery/' fileNamePattern='galery-' fileEnding='webp' :imageCount="imageCount" />
             </template>
           </Tabs>
         </section>
@@ -131,7 +131,7 @@ export default {
   },
   data() {
     return {
-      imageCount: require.context('@/assets/img/galery', false, /\.(jpg)$/).keys().length,
+      imageCount: require.context('@/assets/img/galery', false, /\.(webp)$/).keys().length,
       bookingStatus: "planning",
       dateRange: {
         start: new Date(),

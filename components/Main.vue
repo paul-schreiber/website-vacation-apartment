@@ -12,7 +12,7 @@
           </p>
           <PrimaryNavButton caption="Buchen" route="#accommodation" />
         </div>
-        <img class="intro-img" src="@/assets/img/coverImage.png" />
+        <img class="intro-img" src="@/assets/img/coverImage.webp" />
       </div>
     </div>
     <svg
