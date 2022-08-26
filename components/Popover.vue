@@ -2,6 +2,9 @@
   <div class="popover" v-if="isVisible">
     <div class="overlay" @click="toggleMenu"></div>
     <div class="popover-content">
+      <div class="close-button" @click="toggleMenu">
+        <fa-icon class="mr-s" icon="xmark" />
+      </div>
       <AccommodationDetailView :accom="accom" :closeAction="toggleMenu" />
     </div>
   </div>
@@ -47,6 +50,26 @@ export default {
   border-radius: 20px;
   box-shadow: $soft-shadow;
   overflow: visible;
+  position: relative;
+
+
+  .close-button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+
+    background-color: $close-color;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -54,6 +77,13 @@ export default {
     position: absolute;
     bottom: 0;
     border-radius: 20px 20px 0px 0px;
+  }
+
+  .popover-content {
+    .close-button {
+      top: -20px;
+      right: 0px;
+    }
   }
 }
 </style>
