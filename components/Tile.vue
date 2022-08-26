@@ -20,7 +20,7 @@
         </div>
       </div>
       <footer>
-        <div @click="getPrice(10, 1, 5)" class="tile-price">
+        <div class="tile-price">
           ab {{ cheapestPrice }}€/Nacht
         </div>
         <PrimaryNavButton caption="Details" />
@@ -54,36 +54,6 @@ export default {
   methods: {
     toggleMenu(){
       this.showDetails = !this.showDetails
-    },
-    getPrice(startDate, endDate, persons) {
-      return this.calculatePrice(5, 5, this.accom.priceCatalogue, this.isSummer);
-    },
-    calculatePrice(days, persons, priceCatalogue, isSummer) {
-      let { basePrice, pricePerPerson } = isSummer
-        ? priceCatalogue.summer
-        : priceCatalogue.winter;
-
-      let selectedDiscount = this.selectDiscount(
-        days,
-        priceCatalogue.discounts
-      );
-
-      let dynamicPrice = days * (basePrice + pricePerPerson * persons);
-      let discountedPrice = (dynamicPrice * selectedDiscount) / 100;
-
-      return discountedPrice + priceCatalogue.cleaningFee;
-    },
-    selectDiscount(days, discounts) {
-      const possibleDiscounts = discounts.filter((discount) => {
-        return discount.days <= days;
-      });
-      const strippedDiscounts = possibleDiscounts.map((discount) => {
-        return discount.percentage;
-      });
-
-      //Add no discount to array
-      strippedDiscounts.push(1);
-      return Math.max(...strippedDiscounts);
     },
   },
 };
