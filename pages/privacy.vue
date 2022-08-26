@@ -120,6 +120,10 @@ export default {
 
 <style lang="scss" scoped>
 
+html {
+  touch-action: manipulation;
+}
+
 h2 {
   font-size: $fs-large;
 }

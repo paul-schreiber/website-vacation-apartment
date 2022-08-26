@@ -97,6 +97,7 @@ export default {
 <style lang="scss" scoped>
 body {
   background-color: $light-background-color;
+  touch-action: manipulation;
 }
 
 h2 {
