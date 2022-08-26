@@ -98,29 +98,30 @@ export default {
 body {
   background-color: $light-background-color;
 
-h1 {
-  font-size: $fs-huge;
-  touch-action: manipulation;
-}
+  h1 {
+    font-size: $fs-huge;
+    touch-action: manipulation;
+  }
 
-h2 {
-  font-size: $fs-large;
-}
+  h2 {
+    font-size: $fs-large;
+  }
 
-section {
-  color: $secondary-font-color;
-  font-weight: $fw-light;
-  line-height: 1.6rem;
-  margin-bottom: $margin-large;
-}
+  section {
+    color: $secondary-font-color;
+    font-weight: $fw-light;
+    line-height: 1.6rem;
+    margin-bottom: $margin-large;
+  }
 
-.wrapper {
-  margin-bottom: $margin-huge;
-}
-
-@media only screen and (min-width: 800px) {
   .wrapper {
-    padding: 0 $margin-huge;
+    margin-bottom: $margin-huge;
+  }
+
+  @media only screen and (min-width: 800px) {
+    .wrapper {
+      padding: 0 $margin-huge;
+    }
   }
 }
 </style>
