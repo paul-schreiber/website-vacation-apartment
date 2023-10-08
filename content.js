@@ -1,4 +1,5 @@
 export default {
+    isActive: true,
     name: "Pension Mustermann",
     logo: "logo-mustermann.png",
     address: {
@@ -12,7 +13,7 @@ export default {
     mapLinks: {
         googleMaps: "https://goo.gl/maps/dKPmuabFumee7EbD9",
         appleMaps: "https://maps.apple.com/?address=Boulevard%20du%20Parc,%2077777%20Marne-la-Vall%C3%A9e,%20France&auid=11912749225925647280&ll=48.870304,2.779756&lsp=9902&q=Disneyland%20Paris&_ext=CjAKBAgEEHoKBAgFEAMKBAgGEAcKBAgKEAAKBAhSEAwKBAhTEAMKBAhVEAwKBAhZEAESJCnCgy/G4GNIQDHA3q+D8iQFQDlrdK0w5npIQEHAIVB87lQHQA%3D%3D",
-    },    
+    },
     accommodations: [
         {
             name: "Hofidylle",

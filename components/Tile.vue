@@ -26,12 +26,16 @@
         <PrimaryNavButton caption="Details" />
       </footer>
     </div>
-    <Popover :isVisible="showDetails" :toggleMenu="toggleMenu" :accom="accom"/>
+    <Popover :isVisible="showDetails" :toggleMenu="toggleMenu">
+      <AccommodationDetailView :accom="accom" :closeAction="toggleMenu" />
+    </Popover>
   </div>
 </template>
 
 <script>
+import AccommodationDetailView from "./AccommodationDetailView.vue";
 export default {
+  components: { AccommodationDetailView },
   props: ["accom"],
   data() {
     return {
