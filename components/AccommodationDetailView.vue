@@ -39,7 +39,7 @@
               <IconList :items="accom.equipment" />
             </template>
             <template v-slot:[tabs[2]]>
-              <Galery folderPath='assets/img/gallery/' fileNamePattern='galery-' fileEnding='jpg'
+              <Galery folderPath='assets/img/gallery/' fileNamePattern='gallery-' fileEnding='jpg'
                 :imageCount="imageCount" />
             </template>
           </Tabs>

@@ -8,7 +8,7 @@ export default {
         city: "Zschepa"
     },
     telephone: "035264/97998",
-    mail: "schreiber.pension@gmail.comm",
+    mail: "schreiber.pension@gmail.com",
     mapLinks: {
         googleMaps: "https://maps.app.goo.gl/m1gdpu894Wz7LTmP7",
         appleMaps: "https://maps.apple.com/?address=Elbstra%C3%9Fe%2011,%2001619%20Zschepa,%20Deutschland&auid=1052761439038804511&ll=51.349613,13.264892&lsp=9902&q=Pension%20Schreiber",

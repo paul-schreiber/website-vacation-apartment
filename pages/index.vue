@@ -1,7 +1,15 @@
 <template>
   <div>
-    <Navbar :isHome="true"/>
-    <Main :accommodations="content.accommodations" :texts="content.texts" :mapLinks="content.mapLinks"/>
+    <Navbar :isHome="true" />
+    <Popover :isVisible="!content.isActive" :toggleMenu="goBack">
+      <h2>Wir sind leider vorübergehend geschlossen.</h2>
+      Tut uns leid, wir vermieten aktuell leider keine Zimmer. 😕
+    </Popover>
+    <Main
+      :accommodations="content.accommodations"
+      :texts="content.texts"
+      :mapLinks="content.mapLinks"
+    />
     <Footer
       :name="content.name"
       :address="content.address"
@@ -20,18 +28,23 @@ export default {
     };
   },
   head() {
-      return {
-        title: content.name,
-        meta: [
-          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-          {
-            hid: 'description',
-            name: 'description',
-            content: `${content.name}`
-          }
-        ]
-      }
-    }
+    return {
+      title: content.name,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: "description",
+          name: "description",
+          content: `${content.name}`,
+        },
+      ],
+    };
+  },
+  methods: {
+    goBack() {
+      window.history.back()
+    },
+  },
 };
 </script>
 
