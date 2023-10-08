@@ -5,16 +5,14 @@
       <div class="close-button" @click="toggleMenu">
         <fa-icon class="mr-s" icon="xmark" />
       </div>
-      <AccommodationDetailView :accom="accom" :closeAction="toggleMenu" />
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-import AccommodationDetailView from "./AccommodationDetailView.vue";
 export default {
-  components: { AccommodationDetailView },
-  props: ["isVisible", "toggleMenu", "accom"],
+  props: ["isVisible", "toggleMenu"],
 };
 </script>
 
