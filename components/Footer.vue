@@ -1,16 +1,9 @@
 <template>
   <footer>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 1820 200"
-      class="soft-shadow"
-    >
-      <path
-        d="M 0,0 S 112,17, 378,17, 748,0, 1066,0 s 371,17, 584,17 S 1920,0, 1920,0 V100 H0Z"
-        transform="translate(0 100)"
-        fill="#1ebd92"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1820 200"
+      class="soft-shadow">
+      <path d="M 0,0 S 112,17, 378,17, 748,0, 1066,0 s 371,17, 584,17 S 1920,0, 1920,0 V100 H0Z"
+        transform="translate(0 100)" fill="#9db93a" />
     </svg>
     <div class="footer-content-wrapper">
       <div class="footer-content">
@@ -24,13 +17,11 @@
 
           <div class="mt-b">
             <a class="contact-link" :href="telephoneLink">
-              <fa-icon class="mr-s" icon="phone" />{{ telephone }}</a
-            >
+              <fa-icon class="mr-s" icon="phone" />{{ telephone }}</a>
           </div>
           <div class="mt-s">
             <a class="contact-link" :href="mailLink">
-              <fa-icon class="mr-s" icon="envelope" />{{ mail }}</a
-            >
+              <fa-icon class="mr-s" icon="envelope" />{{ mail }}</a>
           </div>
         </address>
       </div>
@@ -42,9 +33,7 @@
         <NuxtLink to="/legal">Impressum</NuxtLink>
         <div>
           Design by
-          <a class="contact-link" href="https://github.com/paul-schreiber"
-            >Paul Schreiber</a
-          >
+          <a class="contact-link" href="https://github.com/paul-schreiber">Paul Schreiber</a>
         </div>
       </div>
     </div>
@@ -101,6 +90,7 @@ footer {
 
   .logo {
     margin-bottom: $margin-medium;
+
     img {
       width: 250px;
     }
@@ -114,6 +104,7 @@ footer {
 .sub-footer-content-wrapper {
   background-color: $secondary-color;
 }
+
 .sub-footer-content {
   margin: auto;
   padding: $margin-medium $margin-big;
@@ -139,6 +130,7 @@ a.contact-link {
 .mt-b {
   margin-top: $margin-big;
 }
+
 .mt-s {
   margin-top: $margin-small;
 }

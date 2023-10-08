@@ -15,28 +15,16 @@
         <img class="intro-img" src="@/assets/img/coverImage.webp" />
       </div>
     </div>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 1920 100"
-      class="soft-shadow"
-    >
-      <path
-        id="round-bottom"
-        d="M 0,0 S626-64,1106-64,1920,27,1920,27 H0 Z"
-        transform="translate(1920 26.5) rotate(180)"
-        fill="#fafafa"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 100"
+      class="soft-shadow">
+      <path id="round-bottom" d="M 0,0 S626-64,1106-64,1920,27,1920,27 H0 Z" transform="translate(1920 26.5) rotate(180)"
+        fill="#fafafa" />
     </svg>
     <div id="accommodation" class="section">
       <h2 v-if="multipleAccommodations">Unterkünfte</h2>
       <h2 v-else>Unterkunft</h2>
       <div class="tile-container">
-        <Tile
-          v-for="accom in accommodations"
-          :accom="accom"
-          :key="accom.name"
-        />
+        <Tile v-for="accom in accommodations" :accom="accom" :key="accom.name" />
       </div>
     </div>
     <div class="bg-l">
@@ -45,8 +33,7 @@
         <p class="standard-text">
           {{ texts.location }}
         </p>
-        <Map :appleMapsLink="mapLinks.appleMaps" :googleMapsLink="mapLinks.googleMaps"
-/>
+        <Map :appleMapsLink="mapLinks.appleMaps" :googleMapsLink="mapLinks.googleMaps" />
       </div>
     </div>
   </div>
@@ -69,6 +56,7 @@ svg {
   z-index: -1;
   margin-top: -1px;
 }
+
 .soft-shadow {
   -webkit-filter: drop-shadow(0px 5px 40px rgba(0, 0, 0, 0.12));
   filter: drop-shadow(0px 5px 40px rgba(0, 0, 0, 0.12));
@@ -77,9 +65,12 @@ svg {
 .main {
   background-color: $dark-background-color;
   width: 100%;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box; /* Firefox, other Gecko */
-  box-sizing: border-box; /* Opera/IE 8+ */
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
 
   h1 {
     font-size: $fs-huge;
@@ -165,6 +156,7 @@ svg {
     }
   }
 }
+
 @media only screen and (min-width: 800px) {
   .section {
     padding: $margin-huge $margin-huge;

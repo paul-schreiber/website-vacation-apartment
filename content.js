@@ -1,18 +1,18 @@
 export default {
-    name: "Pension Mustermann",
+    name: "Pension Schreiber",
     logo: "logo-mustermann.png",
     address: {
-        street: "Musterstraße",
-        streetNumber: 1,
-        zipCode: "0815",
-        city: "Musterhausen"
+        street: "Elbstraße",
+        streetNumber: 11,
+        zipCode: "01619",
+        city: "Zschepa"
     },
-    telephone: "080008151337",
-    mail: "pension-mustermann@mustermann.com",
+    telephone: "035264/97998",
+    mail: "schreiber.pension@gmail.comm",
     mapLinks: {
-        googleMaps: "https://goo.gl/maps/dKPmuabFumee7EbD9",
-        appleMaps: "https://maps.apple.com/?address=Boulevard%20du%20Parc,%2077777%20Marne-la-Vall%C3%A9e,%20France&auid=11912749225925647280&ll=48.870304,2.779756&lsp=9902&q=Disneyland%20Paris&_ext=CjAKBAgEEHoKBAgFEAMKBAgGEAcKBAgKEAAKBAhSEAwKBAhTEAMKBAhVEAwKBAhZEAESJCnCgy/G4GNIQDHA3q+D8iQFQDlrdK0w5npIQEHAIVB87lQHQA%3D%3D",
-    },    
+        googleMaps: "https://maps.app.goo.gl/m1gdpu894Wz7LTmP7",
+        appleMaps: "https://maps.apple.com/?address=Elbstra%C3%9Fe%2011,%2001619%20Zschepa,%20Deutschland&auid=1052761439038804511&ll=51.349613,13.264892&lsp=9902&q=Pension%20Schreiber",
+    },
     accommodations: [
         {
             name: "Hofidylle",
@@ -116,11 +116,13 @@ export default {
         }
     ],
     texts: {
-        greeting: "Schön dich zu sehen!",
+        greeting: "Urlaub auf dem Bauernhof!",
         intro: {
-            partOne: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no ea takimata sanctus est. Lorem ipsum dolor sit amet.",
-            partTwo: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+            partOne: `Unsere Pension liegt in Zschepa direkt am Elberadweg zwischen Riesa und Mühlberg.
+            Unseren Gästen bieten wir ein reichhaltiges Frühstück und verschiedene Freizeitangebote an.`,
+            partTwo: `Euch steht ein Grillplatz, sowie eine Sitzecke mit Liegemöglichkeiten im Grünen zur Verfügung.
+            Neben dem kostenlosen Pkw-Stellplatz auf dem Hof könnt ihr auch Fahrräder ausleihen.`
         },
-        location: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+        location: "Unsere Pension liegt auf einem Dreiseitenhof im kleinen ruhigen Ort Zschepa. Die idyllische Lage direkt an der Elbe lädt zum Entspannen ein."
     }
 }
