@@ -122,7 +122,7 @@ export default {
   },
   data() {
     return {
-      imageCount: require.context('@/assets/img/gallery', false, /\.(webp)$/).keys().length,
+      imageCount: require.context('@/assets/img/gallery', false, /\.(jpg)$/).keys().length,
       bookingStatus: "planning",
       dateRange: {
         start: new Date(),
